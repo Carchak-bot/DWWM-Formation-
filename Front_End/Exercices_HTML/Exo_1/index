@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ma première page en HTML 5</title>
+    <link href="style.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+  </head>
+  <body>
+    <h1>Le HTML 5</h1>
+    <ul>
+      <li>1er élément</li>
+      <li>2ème élément</li>
+      <li>3ème élément</li>
+    </ul>
+    <div>
+      <p>Texte du 1er paragraphe</p>
+      <p>Texte du 2ème paragraphe</p>
+      <div>
+        Un autre div dans le div précédent qui contient
+        <a href="page.html">un lien</a>
+      </div>
+      <!-- Angron est un primarque nul-->
+      <p>Le langage HTML c'est super lel</p>
+    </div>
+  </body>
+</html>

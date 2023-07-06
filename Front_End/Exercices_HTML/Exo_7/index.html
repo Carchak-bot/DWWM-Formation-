@@ -18,8 +18,8 @@
         <h1>Ventes T1</h1>
       </caption>
       <colgroup>
-        <col span="1" style="background-color:rgb(217, 211, 255)">
-        <col style="background-color:rgb(255, 255, 178)">
+        <col span="1" style="background-color: rgb(217, 211, 255)" />
+        <col style="background-color: rgb(255, 255, 178)" />
       </colgroup>
       <thead>
         <td colspan="4">Ventes du 1<sup>er</sup> trimestre</td>
@@ -32,31 +32,101 @@
       </thead>
       <tbody>
         <tr>
-            <td rowspan="2">Jacques</td>
-            <td>74 400</td>
-            <td>64 200</td>
-            <td>78 900</td>
+          <td>Pierre</td>
+          <td>65 800</td>
+          <td>53 200</td>
+          <td>46 400</td>
         </tr>
         <tr>
-            <td>68 100</td>
-            <td>76 700</td>
-            <td>99 500</td>
+          <td>Paul</td>
+          <td>88 000</td>
+          <td>51 500</td>
+          <td>62 300</td>
         </tr>
+        <tr>
+          <td rowspan="2">Jacques</td>
+          <td>74 400</td>
+          <td>64 200</td>
+          <td>78 900</td>
+        </tr>
+        <tr>
+          <td>68 100</td>
+          <td>76 700</td>
+          <td>99 500</td>
+        </tr>
+      </tbody>
+      <tfoot>
         <tr>
           <td rowspan="2">Total</td>
           <td>228 200</td>
           <td>168 900</td>
           <td>187 600</td>
         </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td>Total</td>
-          <td>228 200</td>
-          <td>168 900</td>
-          <td>187 600</td>
-        </tr>
       </tfoot>
     </table>
+    <br />
+    <br />
+    <br />
+    <fieldset>
+      <legend>Formulaire 1 du turfu :</legend>
+      <form action="destination.php" method="post">
+        Turbo site nainternet : <input type="text" name="nom" />
+        <br />
+        Ton image de toi qui drift : <input type="file" name="fichier" />
+        <br />
+        Bouh c caché<input type="hidden" />
+        <input type="submit" value="envoyer" />
+      </form>
+    </fieldset>
+    <br />
+    <fieldset>
+      <legend>Des conneries en tout genre :</legend>
+      <br />
+      <form action="http://bienvu.net/script.php" method="get">
+        <label for="nom_de_compte">Nom de compte : </label>
+        <input type="text" name="nom_de_compte" />
+        <br />
+        <label for="mdp">Mot de passe :</label>
+        <input type="password" name="mdp" />
+        <input type="submit" value="envoyer" />
+      </form>
+      <br />
+      <br />
+      <input type="checkbox" name="couleur" value="Bleu" /> <b><i>Bleu</i></b>
+      <input type="checkbox" name="couleur" value="Blouge" /> <b><i>Blouge</i></b>
+      <input type="checkbox" name="couleur" value="Blert" /> <b><i>Blert</i></b>
+      <br />
+      <br />
+      <input type="radio" name="couleur" value="Bleu" /> <b><i>Bleu</i></b>
+      <input type="radio" name="couleur" value="Blouge" /> <b><i>Blouge</i></b>
+      <input type="radio" name="couleur" value="Blert" /> <b><i>Blert</i></b>
+      <br />
+      <br />
+      <select name="couleur">
+        <option value="Rleu">Rleu</option>
+        <option value="Rouge">Rouge</option>
+        <option value="Rert">Rert</option>
+      </select>
+      <br />
+      <br />
+      <select name="couleur" size="3" multiple="multiple">
+        <option value="Rleu">Rleu</option>
+        <option value="Rouge">Rouge</option>
+        <option value="Rert">Rert</option>
+      </select>
+    </fieldset>
+    <fieldset>
+      <legend>Encore des truks :</legend>
+      Topkek :
+      <br />
+      <textarea name="topkek" id="01" cols="10" rows="5"></textarea>
+    </fieldset>
+    <label for="metier">Selectionnez votre métier : </label>
+    <input type="text" name="metiers1" id="metiers2" list="metiers3" /><br />
+    <datalist id="metiers3">
+      <option value="webmaster">Webmaster</option>
+      <option value="developpeur">Développeur</option>
+      <option value="administrateur_B.D.D.">Administrateur B.D.D.</option>
+    </datalist>
   </body>
 </html>

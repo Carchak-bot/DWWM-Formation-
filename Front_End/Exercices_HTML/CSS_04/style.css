@@ -1,0 +1,21 @@
+.boitearticle {
+    border: 5px solid black;
+    box-shadow: 5px 5px 10px black;
+    margin: 20px;
+    padding: 5px;
+    display: flex;
+}
+
+#boiteun {
+    border: 10px solid pink;
+    box-shadow: 5px 5px 10px purple;
+}
+
+#boitedeux {
+    margin: 10px;
+}
+
+#boitetrois {
+    border: 2px solid grey;
+    padding: 15px;
+}

@@ -1,14 +1,83 @@
-body{   background-color: rgb(83, 20, 95);
+body{   
+    background-color: rgb(255, 255, 255);
+    margin-left: 100px;
 }
 
-h1{
-    color: rgb(158, 158, 245);
+h1, h2, h3{
+    color: rgb(26, 11, 29);
+    font-size: 48pt;
+    font-style: italic;
+    border-bottom: solid thin rgb(26, 11, 29);
     text-align: center;
+    text-shadow: 2px 2px 4px rgb(255, 255, 255);
 }
 h6{
-    color: rgb(158, 158, 245);
+    color: rgb(26, 11, 29);
     text-align: center;
 }
- fieldset{
+ .f{
     text-align: center;
+    border-color: rgb(76, 0, 255);
+    border-top-width: medium;
+    border-width: 5px;
+    /* background-color: rgba(255, 0, 212, 0.103); */
+    background: linear-gradient(to right, rgba(96, 68, 255, 0.5), rgba(114, 215, 255, 0.5))
+}
+
+div {
+    border: 5px solid;
+    border-color: rgb(142, 118, 197);
+    border-top-width: medium;
+    box-shadow: 10px 5px 5px rgba(72, 3, 163, 0.616);
+}
+
+p {
+    font-size: 12pt;
+    line-height: 14pt;
+    font-family: Arial;
+    letter-spacing: 0.2mm;
+    word-spacing: 0.8mm;
+    color: rgb(26, 11, 29);
+    text-shadow: 1px 1px 2px rgb(255, 255, 255);
+}
+.autoscroll { overflow: auto; }
+
+/* p {
+    width : 400px;
+    height : 2.5em;
+    padding: 1em 1em 1em 1em;
+    border : 1px solid black;
+    }
+    .autoscroll { overflow: auto; }
+    .clipped { overflow: hidden; }
+    .default { overflow: visible; } */
+
+article {
+    margin: 5px;
+}
+
+a::before {
+    content: "-> ";
+}
+
+a:hover {
+    color: rgb(255, 0, 221);
+}
+
+#text {
+    font-family: Arial, "Times New Roman" sans-serif;
+}
+
+fieldset {
+    margin: 5px;
+}
+
+footer {
+    margin: 5px;
+    border: 5px solid;
+    border-color: rgb(76, 0, 255);
+    border-top-width: medium;
+    border-width: 5px;
+    /* background-color: rgba(255, 0, 212, 0.103); */
+    background: linear-gradient(to right, rgba(96, 68, 255, 0.5), rgba(114, 215, 255, 0.5))
 }

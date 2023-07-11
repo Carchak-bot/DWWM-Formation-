@@ -1,0 +1,153 @@
+.jaune {
+  background-color: yellow;
+}
+
+.verte {
+  background-color: green;
+}
+
+.jaune2 {
+  position: relative;
+  bottom: 5px;
+  left: 3em;
+  background-color: #ff0;
+}
+
+.verte2 {
+  position: relative;
+  background-color: #00ff00;
+  width: 15em;
+}
+
+.jaune3 {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  background-color: #ffff00;
+}
+
+.verte3 {
+  padding-top: 5em;
+  position: relative;
+  background-color: #00ff00;
+  width: 15em;
+}
+
+.verte4 {
+  padding-right: 7em;
+  position: relative;
+  background-color: #00ff00;
+  width: 15em;
+}
+
+.jaune4 {
+  width: 4em;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  background-color: #ffff00;
+}
+
+body {
+  background-color: rgba(0, 0, 255, 0.377);
+}
+#centre {
+  margin: 1em 25%;
+  background-color: #fff;
+}
+#gauche {
+  position: absolute;
+  top: 15em;
+  left: 1%;
+  width: 18%;
+}
+#droite {
+  position: absolute;
+  top: 15em;
+  right: 1%;
+  width: 18%;
+}
+.aqua {
+  background-color: #00ffff; /* aqua */
+}
+
+.content {
+  width: 65%;
+  border: 1px solid #000;
+  padding: 1em 1%;
+  background-color: antiquewhite;
+}
+
+.menu {
+  position: absolute;
+  top: 40em;
+  right: 1%;
+  border: 1px solid #000;
+  padding: 1em;
+  width: 20%;
+  background-color: antiquewhite;
+}
+
+html > body .menu {
+  position: fixed;
+}
+
+.menufixe {
+  top: 0;
+  left: 0;
+  width: 100%;
+  border: 1px solid #000000;
+  position: absolute;
+  z-index: 2;
+  text-align: center;
+  background-color: #fff;
+  line-height: 2em;
+}
+
+html > body .menufixe {
+  position: fixed;
+}
+.content {
+  z-index: 1;
+  padding-top: 3em;
+}
+
+.content2 {
+  width: 65%;
+  border: 1px solid #000;
+}
+
+/* CSS */
+
+.content3 {
+  width: 65%;
+  border: 1px solid #000000;
+  padding: 1em 1%;
+  background-color: #ff0;
+}
+
+.menufixe3 {
+  position: absolute;
+  top: 25em;
+  right: 2%;
+  border: 1px solid #000000;
+  padding: 1em;
+  width: 18%;
+  z-index: 2;
+  background-color: antiquewhite;
+}
+
+html > body .menufixe3 {
+  position: fixed;
+}
+
+.menuabsolu3 {
+  position: absolute;
+  top: 25em;
+  right: 1%;
+  border: 1px solid #000000;
+  padding: 1em;
+  width: 20%;
+  background-color: #ffffff;
+  z-index: 3;
+}

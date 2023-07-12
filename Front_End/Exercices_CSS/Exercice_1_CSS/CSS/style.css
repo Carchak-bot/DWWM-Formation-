@@ -1,0 +1,76 @@
+body {
+  background-color: #c6c0a0;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+h2 {
+  color: #7d775c;
+  font-size: 30px;
+  font-weight: bolder;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+h3 {
+  color: #7d775c;
+  font-size: 20px;
+  font-weight: bolder;
+  letter-spacing: 1px;
+}
+
+ul {
+  line-height: 0.6cm;
+}
+
+.cible {
+  font-weight: bolder;
+  color: green;
+}
+
+#duree {
+  color: red;
+  font-weight: bolder;
+  text-decoration: underline;
+}
+
+#boite1 {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  box-shadow: 8px 8px 12px #aaa;
+  -moz-box-shadow: 8px 8px 12px #aaa;
+  -webkit-box-shadow: 8px 8px 12px #aaa;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: wheat;
+  position: fixed;
+  left: 5cm;
+}
+
+#menu {
+  margin: 0;
+  padding: 0;
+  font: bold 1em "georgia", verdana;
+  list-style-type: none;
+}
+
+#menu a {
+  display: block;
+  margin: 15px;
+  color: #508768;
+  text-decoration: none;
+  line-height: 2em;
+  width: 5%;
+  border: 1px solid blue;
+  background-color: #bdd7b5;
+  text-align: center;
+  position: sticky;
+  top: 40px;
+  left: 20px;
+}
+
+#menu a:hover,
+#menu a:focus {
+  color: #bdd7b5;
+  background-color: #508768;
+}

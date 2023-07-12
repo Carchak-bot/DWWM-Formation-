@@ -1,0 +1,8 @@
+nav > ul {
+    display: flex;
+    border: 1px solid black;
+    background-color: #44A33D;
+    color: #a4daa1;
+    align-items: ;
+    flex-direction: right;
+}

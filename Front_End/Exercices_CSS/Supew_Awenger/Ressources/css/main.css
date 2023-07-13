@@ -1,0 +1,108 @@
+body {
+  background-image: url("../img/fond.png");
+}
+
+header {
+  display: flex;
+  background-color: #f5f280;
+  justify-content: flex-start;
+  margin-left: 15%;
+  margin-right: 15%;
+  padding: 15px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background-color: white;
+  padding: 15px;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: center;
+  margin-right: 15%;
+  margin-left: 15%;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+#logo-Super {
+  float: left;
+  padding: 5px;
+  overflow: hidden;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-content: center;
+  width: 1500px;
+  height: 70px;
+  margin-top: 35px;
+  margin-right: 35px;
+  gap: 60px;
+}
+
+nav a {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  text-decoration: none;
+  color: #eb811f;
+  font-size: 25px;
+}
+
+nav a:hover,
+nav a:focus {
+  color: #771616;
+  border: 1px solid #f5f280;
+  background-color: #f5f280;
+}
+
+h2 {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-weight: normal;
+  color: #eb811f;
+  font-size: 25px;
+}
+
+img {
+  float: left;
+  padding-right: 20px;
+}
+
+article {
+    display: flex;
+    font-size: 17px;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.lire-plus {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  border: 1px solid orange;
+  background-color: orange;
+  width: 120px;
+  height: 40px;
+}
+
+a {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 25px;
+}
+
+a:hover,
+a:focus {
+    border: 1px solid #771616;
+  background-color: #771616;
+}

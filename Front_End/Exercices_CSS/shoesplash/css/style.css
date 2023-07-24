@@ -13,24 +13,51 @@
 }
 
 #cart {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
+    position: absolute;
+    margin-left: 80%;
 }
 
 nav {
     display: flex;
-    flex-direction: row;
     align-content: center;
     justify-content: space-around;
     background-color: rgb(248, 212, 242);
     gap: 40px;
-    height: 50px;
+    width: 100%;
+    height: 35px;
+    width: 100%;
+    padding: 10px;
 }
 
 nav a {
+    width: 20%;
     font-size: 25px;
     font-family: 'Times New Roman', Times, serif;
     text-decoration: none;
+    text-align: center;
     color: purple;
+}
+
+nav a:hover {
+    background-color: rgb(255, 151, 238);
+    color: rgb(255, 255, 255);
+    transition: 0.3s;
+}
+
+#slider {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15%;
+    margin-right: 15%;
+    padding: 15px;
+}
+
+h2 {
+    background-color: rgb(248, 212, 242);
+    position: absolute;
+}
+
+#escarpinsprincipaux {
+    width: 900px;
+    height: 650px;
 }

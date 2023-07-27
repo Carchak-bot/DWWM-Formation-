@@ -9,7 +9,7 @@ $tableau[]="Benoit";
 
 print_r($tableau);
 
-for($j=0;$j<10;$j++) {
+for($j=0;$j<10;$j++) { //de 0 à 9 avec +1 à chaque boucle
     //AFFICHER variable
     print $j;
     print PHP_EOL; //retour à la ligne

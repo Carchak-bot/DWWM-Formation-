@@ -1,0 +1,47 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 20px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.one {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.two {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.three {
+    grid-column: 1/4;
+    grid-row: 2;
+    width: 100%;
+    border-bottom: 1px solid green;
+}
+
+.four {
+    grid-column: 1/4;
+    grid-row: 3;
+}
+
+form {
+    border: 1px solid green;
+    padding: 25px;
+    border-radius: 25px;
+    background-color: rgba(171, 230, 200, 0.199);
+}
+
+input {
+    background-color: rgba(62, 71, 66, 0.20);
+}
+
+select {
+    background-color: rgba(62, 71, 66, 0.20);
+}
+
+textarea {
+    background-color: rgba(62, 71, 66, 0.20);
+}

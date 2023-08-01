@@ -19,7 +19,8 @@
     grid-column: 1/4;
     grid-row: 2;
     width: 100%;
-    border-bottom: 1px solid green;
+    border: none;
+    border-bottom: 1px green solid;
 }
 
 .four {
@@ -31,17 +32,35 @@ form {
     border: 1px solid green;
     padding: 25px;
     border-radius: 25px;
-    background-color: rgba(171, 230, 200, 0.199);
+    background-color: rgb(244, 247, 248);
 }
 
-input {
-    background-color: rgba(62, 71, 66, 0.20);
+input, select, textarea {
+    background-color: rgb(232, 238, 239);
+    border: none;
+    font-family: times;
+    border-radius: 5px;
 }
 
-select {
-    background-color: rgba(62, 71, 66, 0.20);
+.barrestranspa {
+    height: 8%;
+    width: 100%;
+    font-size: 18px;
 }
 
-textarea {
-    background-color: rgba(62, 71, 66, 0.20);
+#commentaires {
+    height: 50%;
+}
+
+button {
+    color: rgb(255, 255, 255);
+    background-color: rgb(26, 188, 156);
+    box-shadow: 5px rgba(16, 94, 16, 0.541);
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+button:hover {
+    background-color: rgb(17, 128, 105);
+    transition: 0.3s;
 }

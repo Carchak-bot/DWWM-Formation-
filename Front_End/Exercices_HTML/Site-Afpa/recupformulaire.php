@@ -1,20 +1,20 @@
 <?php
-print "Votre nom est : ". "<br>";
+print "<b> Votre nom est : </b>". "<br>";
 print $_POST["nomPrenom"]. "<br>";
-print PHP_EOL. "<br>";
-print "Votre e-mail est : ". "<br>";
+print "<br>";
+print "<b> Votre e-mail est : </b>". "<br>";
 print $_POST["email"]. "<br>";
-print PHP_EOL. "<br>";
-print "Votre numéro de téléphone est : ". "<br>";
+print "<br>";
+print "<b> Votre numéro de téléphone est : </b>". "<br>";
 print $_POST["telephone"]. "<br>";
-print PHP_EOL. "<br>";
-print "Vous avez commenté : ". "<br>";
+print "<br>";
+print "<b> Vous avez commenté : </b>". "<br>";
 print $_POST["commentaire"]. "<br>";
-print PHP_EOL. "<br>";
-print "Vous souhaitez être contacté par : ". "<br>";
+print "<br>";
+print "<b> Vous souhaitez être contacté par : </b>". "<br>";
 print $_POST["comPref"]. "<br>";
-print PHP_EOL. "<br>";
-print "De préférence le / les : ". "<br>";
+print "<br>";
+print "<b> De préférence le / les : </b>". "<br>";
 if (isset($_POST['pref'])) {          
     foreach ($_POST['pref'] as $valeur) {         
         echo $valeur . "<br>";     } }

@@ -53,11 +53,11 @@ header nav ul li a{
 	line-height:40px;
 	color:#FFF;
 	text-decoration:none;
+	transition: 0.25s background linear;
 }
 
 header nav ul li a:hover{
 	background-color:#333;
-	
 }
 
 .home{
@@ -119,6 +119,7 @@ header nav ul li a:hover{
 .home aside ul li a{
 	color:#000;
 	text-decoration:none;
+	transition: 0.5s color linear;
 }
 
 .home aside ul li a:hover{
@@ -161,7 +162,11 @@ footer address
 
 footer address a{
 	display:block;
+	transition: 0.25s font-size linear;
 }
 
-
+footer address a:hover{
+	display:block;
+	font-size: 69px;
+}
 

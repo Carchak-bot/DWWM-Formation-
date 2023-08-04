@@ -27,12 +27,19 @@
               name="tSurnat"
               placeholder="Endurance surnaturelle"
             /><br />
-            <h4>Votre valeur d'Intelligene :</h4>
+            <h4>Votre valeur d'Intelligence :</h4>
             <input type="text" name="int" placeholder="Intelligence" />
             <input
               type="text"
               name="intSurnat"
               placeholder="Intelligence surnaturelle"
+            /><br />
+            <h4>Votre valeur de Perception :</h4>
+            <input type="text" name="per" placeholder="Perception" />
+            <input
+              type="text"
+              name="perSurnat"
+              placeholder="Perception surnaturelle"
             /><br />
             <h4>Votre valeur de Force mentale :</h4>
             <input type="text" name="wp" placeholder="Force-mentale" />
@@ -96,6 +103,14 @@
               required
             />
             +30<br />
+            <h4>Champs de Geller endommagé ?</h4>
+            <label for="gellarFieldDamaged"></label>
+            <input
+              name="gellarFieldDamaged"
+              type="checkbox"
+              value="yes"
+            />
+            Vrai<br />
             <h4>Moteur Warp endommagé ?</h4>
             <label for="warpEngineDamaged"></label>
             <input
@@ -104,6 +119,22 @@
               value="yes"
             />
             Vrai<br />
+            <h4>Y a t il un Navigateur à bord ( qui gère le test ) ?</h4>
+            <label for="navigator"></label>
+            <input
+              name="navigator"
+              type="checkbox"
+              value="yes"
+            />
+            Oui<br />
+            <h4>Est ce que le champs de Geller est éteins ?</h4>
+            <label for="gellarFieldOffline"></label>
+            <input
+              name="gellarFieldOffline"
+              type="checkbox"
+              value="yes"
+            />
+            Oui<br />
           </div>
           <button type="submit">Voyager</button>
         </form>

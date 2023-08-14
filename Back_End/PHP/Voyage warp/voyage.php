@@ -10,6 +10,10 @@ $tempstrajet=0;
 $tempstrajettheorique=0;
 $tempstrajetabsolu=0;
 
+$psyniscienceCheck1=0;
+$psyniscienceCheck1result=0;
+$psyniscienceCheck1resultfinal=0;
+
 $frequenceRencontre=5;
 $rencontresNombre=0;
 $rencontres=array();
@@ -134,9 +138,20 @@ print "<b>Coté PJ :</b> <br>";
 
 if ((isset($_POST["navigator"])) &&
 ($_POST["navigator"]==true)) {
-//Coté ou il y a un navigateur pour guider le vaisseau
+    //Coté ou il y a un navigateur pour guider le vaisseau
 
-$psyniscienceCheck1=rand(1, 100);
+    $psyniscienceCheck1=rand(1, 100);
+    if ($_POST["psyniscience"]=="psyniscienceT") {
+        $psyniscienceCheck1result=($_POST["per"]-$psyniscienceCheck1);
+        if ($psyniscienceCheck1result>=0) {
+            $psyniscienceCheck1resultfinal=(($psyniscienceCheck1result/10)+(floor($_POST["perSurnat"]/2)));
+            print "Les augures sont bien interprêtés, le navigateur et sa suite peuvent avoir accès au résultat
+             du calcul de la durée du voyage Warp. <br>";
+            print "Les augures sont interprêtés avec ";
+            print $psyniscienceCheck1resultfinal;
+            print " degrés de réussites. <br><br>";
+        }
+    }
 
 
 

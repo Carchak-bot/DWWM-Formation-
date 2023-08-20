@@ -13,6 +13,7 @@ $tempstrajetabsolu=0;
 $psyniscienceCheck1=0;
 $psyniscienceCheck1result=0;
 $psyniscienceCheck1resultfinal=0;
+$psyniscienceCheckFailed=0;
 
 $frequenceRencontre=5;
 $rencontresNombre=0;
@@ -150,6 +151,12 @@ if ((isset($_POST["navigator"])) &&
             print "Les augures sont interprêtés avec ";
             print $psyniscienceCheck1resultfinal;
             print " degrés de réussites. <br><br>";
+        }
+    } else {
+        $psyniscienceCheckFailed=rand(1, 5);
+        if ($psyniscienceCheckFailed==1) {
+            $dureeEronner=($tempstrajettheorique*2);
+
         }
     }
 

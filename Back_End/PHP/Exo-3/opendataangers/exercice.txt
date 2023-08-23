@@ -1,0 +1,5 @@
+Je saisie le nom d'un arrêt 
+// Le programme m'indique par un icône si c'est un tram ou un bus //
+Le nom de la ligne, son code, // sa couleur //, sa destination
+A quel heure passe le prochain 
+Si le transport est adapté au fauteuil roulant 

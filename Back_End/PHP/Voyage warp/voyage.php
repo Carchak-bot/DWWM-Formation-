@@ -10,6 +10,11 @@ $tempstrajet=0;
 $tempstrajettheorique=0;
 $tempstrajetabsolu=0;
 
+$psyniscienceCheck1=0;
+$psyniscienceCheck1result=0;
+$psyniscienceCheck1resultfinal=0;
+$psyniscienceCheckFailed=0;
+
 $frequenceRencontre=5;
 $rencontresNombre=0;
 $rencontres=array();
@@ -137,6 +142,23 @@ if ((isset($_POST["navigator"])) &&
 //Coté ou il y a un navigateur pour guider le vaisseau
 
 $psyniscienceCheck1=rand(1, 100);
+    if ($_POST["psyniscience"]=="psyniscienceT") {
+        $psyniscienceCheck1result=($_POST["per"]-$psyniscienceCheck1);
+        if ($psyniscienceCheck1result>=0) {
+            $psyniscienceCheck1resultfinal=(($psyniscienceCheck1result/10)+(floor($_POST["perSurnat"]/2)));
+            print "Les augures sont bien interprêtés, le navigateur et sa suite peuvent avoir accès au résultat
+             du calcul de la durée du voyage Warp. <br>";
+            print "Les augures sont interprêtés avec ";
+            print $psyniscienceCheck1resultfinal;
+            print " degrés de réussites. <br><br>";
+        }
+    } else {
+        $psyniscienceCheckFailed=rand(1, 5);
+        if ($psyniscienceCheckFailed==1) {
+            $dureeEronner=($tempstrajettheorique*2);
+
+        }
+    }
 
 
 
@@ -154,6 +176,8 @@ $psyniscienceCheck1=rand(1, 100);
     print $tempstrajetabsolu;
     print "jours. <br> <br>";
 
+    // Calcul du nombre de rencontres Warp
+
     $rencontresNombre=floor($tempstrajetabsolu/$frequenceRencontre);
     print "Il y aura ";
     print $rencontresNombre;
@@ -162,6 +186,15 @@ $psyniscienceCheck1=rand(1, 100);
     for ($i = 1; $i <= $rencontresNombre; $i++){
         $rencontresTirage=rand(1, 100);
         print $rencontresTirage;
+        if (($rencontresTirage >= 1) && ($rencontresTirage <= 20)) {
+            print "Tout va bien. Le navigateur peut tenter de localiser l'Astronomican à nouveau tandis que tout
+             personnages souffrant d'halucinations warp peut essayer de s'en débarasser à nouveau. <br>";
+        }
+        if (($rencontresTirage >= 21) && ($rencontresTirage <= 30)) {
+            print "Mirage de désillusion. Chaque explorateur et PNJ importants à bord doivent faire un test de Force Mentale (+0) et le réussir.
+             Sinon ils seront affectés par une hallucination warp choisie au hasard. Si le champs de Geller est opérationnel chaques personnages
+             reçoivent un bonus de (+30) au test de Force Mentale. S'il ne l'est pas le test subit un malus de (-30) à la place. <br>";
+        }
         if (($rencontresTirage >= 31) && ($rencontresTirage <= 40)) {
             print "Prédateurs psychiques ! <br>";
             /* Si cet effet se manifeste à bord d'un vaisseau, 
@@ -182,25 +215,55 @@ $psyniscienceCheck1=rand(1, 100);
             print $incursionsWarp;
 
             if (($incursionsWarp >= 0) && ($incursionsWarp <= 20)) {
-                print "Swarming Malice !";
+                print "Essaim de Cruauté ! <br>";
             }
             if (($incursionsWarp >= 21) && ($incursionsWarp <= 40)) {
-                print "Possession !";
+                print "Possession ! <br>";
             }
             if (($incursionsWarp >= 41) && ($incursionsWarp <= 60)) {
-                print "Plague of Madness !";
+                print "Plague of Madness ! <br>";
             }
             if (($incursionsWarp >= 61) && ($incursionsWarp <= 80)) {
-                print "Daemonic Incursion !";
+                print "Daemonic Incursion ! <br>";
             }
             if (($incursionsWarp >= 81) && ($incursionsWarp <= 90)) {
-                print "Warp Sickness !";
+                print "Warp Sickness ! <br>";
             }
             if (($incursionsWarp >= 91) && ($incursionsWarp <= 100)) {
-                print "Warp Monster !";
+                print "Warp Monster ! <br>";
+            }
+            if ($incursionsWarp >= 101) {
+                print "Warp Monster ! <br>";
             }
         }
         print "<br>";
+        if (($rencontresTirage >= 41) && ($rencontresTirage <= 50)) {
+            print "Stase. <br>";
+        }
+        print "<br>";
+        if (($rencontresTirage >= 51) && ($rencontresTirage <= 60)) {
+            print "Inhumaine combustion spontanée. <br>";
+        }
+        print "<br>";
+        if (($rencontresTirage >= 61) && ($rencontresTirage <= 70)) {
+            print "Tempête Warp ! <br>";
+        }
+        print "<br>";
+        if (($rencontresTirage >= 71) && ($rencontresTirage <= 80)) {
+            print "Récifs Aethériques. <br>";
+        }
+        print "<br>";
+        if (($rencontresTirage >= 81) && ($rencontresTirage <= 90)) {
+            print "Brèche Warp. <br>";
+        }
+        print "<br>";
+        if (($rencontresTirage >= 91) && ($rencontresTirage <= 100)) {
+            print "Trou temporel. <br>";
+        }
+        print "<br>";
+        if ($rencontresTirage >= 100) {
+            print "Trou temporel. <br>";
+        }
     }
 }
 

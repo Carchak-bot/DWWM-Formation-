@@ -139,9 +139,9 @@ print "<b>Coté PJ :</b> <br>";
 
 if ((isset($_POST["navigator"])) &&
 ($_POST["navigator"]==true)) {
-//Coté ou il y a un navigateur pour guider le vaisseau
+    //Coté ou il y a un navigateur pour guider le vaisseau
 
-$psyniscienceCheck1=rand(1, 100);
+    $psyniscienceCheck1=rand(1, 100);
     if ($_POST["psyniscience"]=="psyniscienceT") {
         $psyniscienceCheck1result=($_POST["per"]-$psyniscienceCheck1);
         if ($psyniscienceCheck1result>=0) {

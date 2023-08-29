@@ -25,6 +25,9 @@ $rencontresDescription=" ";
 
 $translationHardcore=0;
 
+$dgtsCrits=0;
+$d10=0;
+
 print "<b>Coté MJ :</b> <br>";
 
 
@@ -185,7 +188,9 @@ if ((isset($_POST["navigator"])) &&
 
     for ($i = 1; $i <= $rencontresNombre; $i++){
         $rencontresTirage=rand(1, 100);
+        print "[";
         print $rencontresTirage;
+        print "] ";
         if (($rencontresTirage >= 1) && ($rencontresTirage <= 20)) {
             print "Tout va bien. Le navigateur peut tenter de localiser l'Astronomican à nouveau tandis que tout
              personnages souffrant d'halucinations warp peut essayer de s'en débarasser à nouveau. <br>";
@@ -212,8 +217,9 @@ if ((isset($_POST["navigator"])) &&
             ($_POST["gellarFieldDamaged"]==false)) {
                 $incursionsWarp=floor($incursionsWarp-30);
             }
+            print "[";
             print $incursionsWarp;
-
+            print "] ";
             if (($incursionsWarp >= 0) && ($incursionsWarp <= 20)) {
                 print "Essaim de Cruauté ! <br>";
             }
@@ -236,34 +242,54 @@ if ((isset($_POST["navigator"])) &&
                 print "Warp Monster ! <br>";
             }
         }
-        print "<br>";
         if (($rencontresTirage >= 41) && ($rencontresTirage <= 50)) {
             print "Stase. <br>";
         }
-        print "<br>";
         if (($rencontresTirage >= 51) && ($rencontresTirage <= 60)) {
             print "Inhumaine combustion spontanée. <br>";
         }
-        print "<br>";
         if (($rencontresTirage >= 61) && ($rencontresTirage <= 70)) {
             print "Tempête Warp ! <br>";
+            if ((isset($_POST["gellarFieldDamaged"])) &&
+            ($_POST["gellarFieldDamaged"]==true)) {
+                $dgtsCrits=rand(1, 10);
+            } else {
+                $dgtsCrits=rand(1, 10);
+                $d10=rand(1, 10);
+                if ($dgtsCrits <= $d10) {
+                    $dgtsCrits=$d10;
+                }
+            }
+            if ((isset($_POST["gellarFieldOffline"])) &&
+            ($_POST["gellarFieldOffline"]==true)) {
+                $dgtsCrits=rand(1,10);
+                $dgtsCrits=$dgtsCrits+2;
+            } else {
+                $dgtsCrits=rand(1, 10);
+                $d10=rand(1, 10);
+                if ($dgtsCrits <= $d10) {
+                    $dgtsCrits=$d10;
+                }
+            }
+            print "Le vaisseau va subir ";
+            print "<b>";
+            print $dgtsCrits;
+            print "</b>";
+            print " de dégâts critiques. Il faut se référer à la page 222 du livre de base au tableau des dégâts critiques.";
         }
-        print "<br>";
         if (($rencontresTirage >= 71) && ($rencontresTirage <= 80)) {
             print "Récifs Aethériques. <br>";
         }
-        print "<br>";
         if (($rencontresTirage >= 81) && ($rencontresTirage <= 90)) {
             print "Brèche Warp. <br>";
         }
-        print "<br>";
         if (($rencontresTirage >= 91) && ($rencontresTirage <= 100)) {
             print "Trou temporel. <br>";
         }
-        print "<br>";
         if ($rencontresTirage >= 100) {
             print "Trou temporel. <br>";
         }
+        print "<br>";
     }
 }
 

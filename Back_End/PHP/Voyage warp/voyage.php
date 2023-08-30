@@ -1,5 +1,7 @@
 <?php
 
+// Variables :
+
 $route=0;
 $routegellarfieldDamaged=0;
 $routemultiple=0;
@@ -26,7 +28,130 @@ $rencontresDescription=" ";
 $translationHardcore=0;
 
 $dgtsCrits=0;
+$dgts=0;
 $d10=0;
+
+//____________________________________________________________________________________________
+
+// Fonction Tempête Warp :
+
+function tempete($gellarFieldDamaged,$gellarFieldOffline) {
+    if ((isset($gellarFieldDamaged)) &&
+    ($gellarFieldDamaged==true)) {
+        $dgtsCrits=rand(1, 10);
+    } else {
+        $dgtsCrits=rand(1, 10);
+        $d10=rand(1, 10);
+        if ($dgtsCrits <= $d10) {
+            $dgtsCrits=$d10;
+        }
+    }
+    if ((isset($gellarFieldOffline)) &&
+    ($gellarFieldOffline==true)) {
+        $dgtsCrits=rand(1,10);
+        $dgtsCrits=$dgtsCrits+2;
+    } else {
+        $dgtsCrits=rand(1, 10);
+        $d10=rand(1, 10);
+        if ($dgtsCrits <= $d10) {
+            $dgtsCrits=$d10;
+        }
+    }
+    $text= "Le vaisseau va subir ";
+    $text.= "<b>";
+    $text.= $dgtsCrits;
+    $text.= "</b>";
+    $text.= " de dégâts critiques. Il faut se référer à la page 222 du livre de base au tableau des dégâts critiques.";
+    return $text;
+}
+
+// Fonction Récifs Aethériques
+
+function recifs($gellarFieldDamaged,$gellarFieldOffline) {
+    if ((isset($gellarFieldDamaged)) &&
+    ($gellarFieldDamaged==true)) {
+        $dgts=(rand(2, 20)+3);
+    } else {
+        $dgts=(rand(1, 10)+2);
+    }
+    if ((isset($gellarFieldOffline)) &&
+    ($gellarFieldOffline==true)) {
+        $dgts=(rand(4, 40)+5);
+    } else {
+        $dgts=(rand(1, 10)+2);
+    }
+    $text= "Le vaisseau va subir ";
+    $text.= "<b>";
+    $text.= $dgts;
+    $text.= "</b>";
+    $text.= " de dégâts à la coque ignorant les boucliers de vide.";
+    return $text;
+}
+
+// Fonction Incursions Warp 
+/* Si cet effet se manifeste à bord d'un vaisseau, 
+            rouler une fois les dés sur la <b>table 2-8 Incursions Warp</b> (voir page 33)
+            et appliquez le résultat. Réduisez le résultat du lancé de dé par -30 si le champs de 
+            Geller est complètement fonctionnel (jusqu'à un minimum de 01). Ajoutez +30 au résultat
+            du jet si le champs de Geller est éteins. */
+
+function incursion($gellarFieldOffline,$gellarFieldDamaged) {
+    $incursionsWarp=rand(1, 100);
+    if ((isset($gellarFieldOffline)) &&
+    ($gellarFieldOffline==true)) {
+        $incursionsWarp=$incursionsWarp+30;
+    }
+    if (((isset($gellarFieldDamaged)) &&
+    ($gellarFieldDamaged==false)) &&
+    ((isset($gellarFieldOffline)) &&
+    ($gellarFieldOffline==false))) {
+        $incursionsWarp=floor($incursionsWarp-30);
+    }
+    $text= "[";
+    $text.= $incursionsWarp;
+    $text.= "] ";
+    if (($incursionsWarp >= 0) && ($incursionsWarp <= 20)) {
+        $text.= "Essaim de Cruauté ! <br>";
+    }
+    if (($incursionsWarp >= 21) && ($incursionsWarp <= 40)) {
+        $text.= "Possession ! <br>";
+    }
+    if (($incursionsWarp >= 41) && ($incursionsWarp <= 60)) {
+        $text.= "Plague of Madness ! <br>";
+    }
+    if (($incursionsWarp >= 61) && ($incursionsWarp <= 80)) {
+        $text.= "Daemonic Incursion ! <br>";
+    }
+    if (($incursionsWarp >= 81) && ($incursionsWarp <= 90)) {
+        $text.= "Warp Sickness ! <br>";
+    }
+    if (($incursionsWarp >= 91) && ($incursionsWarp <= 100)) {
+        $text.= "Warp Monster ! <br>";
+    }
+    if ($incursionsWarp >= 101) {
+        $text.= "Warp Monster ! <br>";
+    }
+    return $text;
+}
+
+// Fonction brèche Warp
+
+function breche() {
+    $d10=rand(1, 10);
+    $text= "Le vaisseau est perdu pendant ";
+    $text.= "<b>";
+    $text.= $d10;
+    $text.= "</b>";
+    $text.= "Jours et rencontrera autant d'incursions Warp que de jours perdus dans la nébuleuse. Voici la liste : ";
+    for ($i = 1; $i <= $d10; $i++) {
+        $text.= incursion($_POST["gellarFieldOffline"],$_POST["gellarFieldDamaged"]);
+        $text.= "<br>";
+    }
+    return $text;
+}
+
+//______________________________________________________________________________________________
+// Début Programme
 
 print "<b>Coté MJ :</b> <br>";
 
@@ -173,6 +298,8 @@ if ((isset($_POST["navigator"])) &&
     $translationHardcore=rand(1, 10);
     if ($translationHardcore >= 6) {
         print "Vous entrez dans le warp en pleine tempête warp. <br>";
+        print tempete($_POST["gellarFieldDamaged"],$_POST["gellarFieldOffline"]);
+        print "<br>";
     }
     $tempstrajetabsolu=($tempstrajettheorique*4);
     print "De part le manque de navigateur le voyage va durer ";
@@ -202,45 +329,7 @@ if ((isset($_POST["navigator"])) &&
         }
         if (($rencontresTirage >= 31) && ($rencontresTirage <= 40)) {
             print "Prédateurs psychiques ! <br>";
-            /* Si cet effet se manifeste à bord d'un vaisseau, 
-            rouler une fois les dés sur la <b>table 2-8 Incursions Warp</b> (voir page 33)
-            et appliquez le résultat. Réduisez le résultat du lancé de dé par -30 si le champs de 
-            Geller est complètement fonctionnel (jusqu'à un minimum de 01). Ajoutez +30 au résultat
-            du jet si le champs de Geller est éteins. */
-            $incursionsWarp=rand(1, 100);
-            if ((isset($_POST["gellarFieldOffline"])) &&
-            ($_POST["gellarFieldOffline"]==true)) {
-                $incursionsWarp=$incursionsWarp+30;
-            }
-
-            if ((isset($_POST["gellarFieldDamaged"])) &&
-            ($_POST["gellarFieldDamaged"]==false)) {
-                $incursionsWarp=floor($incursionsWarp-30);
-            }
-            print "[";
-            print $incursionsWarp;
-            print "] ";
-            if (($incursionsWarp >= 0) && ($incursionsWarp <= 20)) {
-                print "Essaim de Cruauté ! <br>";
-            }
-            if (($incursionsWarp >= 21) && ($incursionsWarp <= 40)) {
-                print "Possession ! <br>";
-            }
-            if (($incursionsWarp >= 41) && ($incursionsWarp <= 60)) {
-                print "Plague of Madness ! <br>";
-            }
-            if (($incursionsWarp >= 61) && ($incursionsWarp <= 80)) {
-                print "Daemonic Incursion ! <br>";
-            }
-            if (($incursionsWarp >= 81) && ($incursionsWarp <= 90)) {
-                print "Warp Sickness ! <br>";
-            }
-            if (($incursionsWarp >= 91) && ($incursionsWarp <= 100)) {
-                print "Warp Monster ! <br>";
-            }
-            if ($incursionsWarp >= 101) {
-                print "Warp Monster ! <br>";
-            }
+            print incursion($_POST["gellarFieldOffline"],$_POST["gellarFieldDamaged"]);
         }
         if (($rencontresTirage >= 41) && ($rencontresTirage <= 50)) {
             print "Stase. <br>";
@@ -250,38 +339,15 @@ if ((isset($_POST["navigator"])) &&
         }
         if (($rencontresTirage >= 61) && ($rencontresTirage <= 70)) {
             print "Tempête Warp ! <br>";
-            if ((isset($_POST["gellarFieldDamaged"])) &&
-            ($_POST["gellarFieldDamaged"]==true)) {
-                $dgtsCrits=rand(1, 10);
-            } else {
-                $dgtsCrits=rand(1, 10);
-                $d10=rand(1, 10);
-                if ($dgtsCrits <= $d10) {
-                    $dgtsCrits=$d10;
-                }
-            }
-            if ((isset($_POST["gellarFieldOffline"])) &&
-            ($_POST["gellarFieldOffline"]==true)) {
-                $dgtsCrits=rand(1,10);
-                $dgtsCrits=$dgtsCrits+2;
-            } else {
-                $dgtsCrits=rand(1, 10);
-                $d10=rand(1, 10);
-                if ($dgtsCrits <= $d10) {
-                    $dgtsCrits=$d10;
-                }
-            }
-            print "Le vaisseau va subir ";
-            print "<b>";
-            print $dgtsCrits;
-            print "</b>";
-            print " de dégâts critiques. Il faut se référer à la page 222 du livre de base au tableau des dégâts critiques.";
+            print tempete($_POST["gellarFieldDamaged"],$_POST["gellarFieldOffline"]);
         }
         if (($rencontresTirage >= 71) && ($rencontresTirage <= 80)) {
             print "Récifs Aethériques. <br>";
+            print recifs($_POST["gellarFieldDamaged"],$_POST["gellarFieldOffline"]);
         }
         if (($rencontresTirage >= 81) && ($rencontresTirage <= 90)) {
             print "Brèche Warp. <br>";
+            print breche();
         }
         if (($rencontresTirage >= 91) && ($rencontresTirage <= 100)) {
             print "Trou temporel. <br>";

@@ -142,11 +142,13 @@ function breche() {
     $text.= "<b>";
     $text.= $d10;
     $text.= "</b>";
-    $text.= "Jours et rencontrera autant d'incursions Warp que de jours perdus dans la nébuleuse. Voici la liste : ";
+    $text.= " Jours et rencontrera autant d'incursions Warp que de jours perdus dans la nébuleuse. Voici la liste : <br>";
     for ($i = 1; $i <= $d10; $i++) {
+        $text.= "   - ";
         $text.= incursion($_POST["gellarFieldOffline"],$_POST["gellarFieldDamaged"]);
         $text.= "<br>";
     }
+    $text.= "<br>";
     return $text;
 }
 

@@ -1,18 +1,14 @@
 <?php
 
-// Fichiers PHP inclus
+// Variables inclues
 
 require "variables.php";
 require "fonctions.php";
 
-/********************************************************************************************************
- ********************************************************************************************************
- ********************************************************************************************************/
-
+//______________________________________________________________________________________________
 // Début Programme
 
 print "<b>Coté MJ :</b> <br>";
-
 
 //Prise en compte du champs de Geller endommagé
 
@@ -64,8 +60,8 @@ if ((isset($_POST["gellarFieldDamaged"])) &&
         break;
  }
 
-
 $duree=rand(1, 10);
+
 switch ($route) {
     case 1:
     case 2:
@@ -145,10 +141,6 @@ if ((isset($_POST["navigator"])) &&
         }
     }
 
-
-
-
-
 } else {
     // Coté ou il n'y a pas de Navigateurs pour guider le vaisseau
 
@@ -170,70 +162,62 @@ if ((isset($_POST["navigator"])) &&
     print $rencontresNombre;
     print " rencontres Warp durant ce voyage. <br> <br>";
 
-    for ($i = 1; $i <= $rencontresNombre; $i++){
-        $rencontresTirage=rand(1, 100);
-        print "[";
-        print $rencontresTirage;
-        print "] ";
-
-        if ($badOmens==1) {
-            if  (($rencontresTirage==9) | ($rencontresTirage==19) | ($rencontresTirage==29) | ($rencontresTirage==39) |
-            ($rencontresTirage==49) | ($rencontresTirage==59) | ($rencontresTirage==69) | ($rencontresTirage==79) | ($rencontresTirage==89)
-            | ($rencontresTirage==91) | ($rencontresTirage==99) ) {
-
+    if (($handle3 = fopen("rencontresWarp.csv", "r")) !== FALSE) {
+        while (($dataRencontres = fgetcsv($handle3, 50000, ";")) !== FALSE) {
+            for ($i = 1; $i <= $rencontresNombre; $i++){
+                $rencontresTirage=rand(1, 100);
+                print "[";
+                print $rencontresTirage;
+                print "] ";
+                if (($rencontresTirage >= $dataRencontres[1]) && ($rencontresTirage <= $dataRencontres[2])) {
+                    print $dataRencontres[1];
+                    print $dataRencontres[3];
+                }
+                if (($rencontresTirage >= $dataRencontres[1]) && ($rencontresTirage <= $dataRencontres[2])) {
+                    print $dataRencontres[1];
+                    print $dataRencontres[3];
+                }
+                if (($rencontresTirage >= $dataRencontres[1]) && ($rencontresTirage <= $dataRencontres[2])) {
+                    print $dataRencontres[1];
+                    print $dataRencontres[3];
+                    print incursion($_POST["gellarFieldOffline"],$_POST["gellarFieldDamaged"]);
+                }
+                if (($rencontresTirage >= $dataRencontres[1]) && ($rencontresTirage <= $dataRencontres[2])) {
+                    print $dataRencontres[3];
+                }
+                if (($rencontresTirage >= $dataRencontres[1]) && ($rencontresTirage <= $dataRencontres[2])) {
+                    print $dataRencontres[3];
+                }
+                if (($rencontresTirage >= $dataRencontres[1]) && ($rencontresTirage <= $dataRencontres[2])) {
+                    print $dataRencontres[3];
+                    print tempete($_POST["gellarFieldDamaged"],$_POST["gellarFieldOffline"]);
+                }
+                if (($rencontresTirage >= $dataRencontres[1]) && ($rencontresTirage <= $dataRencontres[2])) {
+                    print $dataRencontres[3];
+                    print recifs($_POST["gellarFieldDamaged"],$_POST["gellarFieldOffline"]);
+                }
+                if (($rencontresTirage >= $dataRencontres[1]) && ($rencontresTirage <= $dataRencontres[2])) {
+                    print $dataRencontres[3];
+                    print breche();
+                }
+                if (($rencontresTirage >= $dataRencontres[1]) && ($rencontresTirage <= $dataRencontres[2])) {
+                    print $dataRencontres[3];
+                    $severlyOffCourse=1;
+                }
+                if ($rencontresTirage >= $dataRencontres[2]) {
+                    print $dataRencontres[3];
+                    $severlyOffCourse=1;
+                }
+                //_______________ test switch _______________________
+                switch (true) {
+                    case (($rencontresTirage>=$dataRencontres[1]) && ($rencontresTirage<=$dataRencontres[2])):
+                        print $dataRencontres[1];
+                        print $dataRencontres[3];
+                        break;
+                }
+                print "<br>";
             }
         }
-
-        if (($rencontresTirage >= 1) && ($rencontresTirage <= 20)) {
-            print "Tout va bien. Le navigateur peut tenter de localiser l'Astronomican à nouveau tandis que tout
-             personnages souffrant d'halucinations warp peut essayer de s'en débarasser à nouveau. <br>";
-        }
-        if (($rencontresTirage >= 21) && ($rencontresTirage <= 30)) {
-            print "Mirage de désillusion. Chaque explorateur et PNJ importants à bord doivent faire un test de Force Mentale (+0) et le réussir.
-             Sinon ils seront affectés par une hallucination warp choisie au hasard. Si le champs de Geller est opérationnel chaques personnages
-             reçoivent un bonus de (+30) au test de Force Mentale. S'il ne l'est pas le test subit un malus de (-30) à la place. <br>";
-        }
-        if (($rencontresTirage >= 31) && ($rencontresTirage <= 40)) {
-            print "Prédateurs psychiques ! <br> Si cet effet se manifeste à bord d'un vaisseau, rouler une fois les dés sur la 
-            <b>table 2-8 Incursions Warp</b> (voir page 33) et appliquez le résultat. Réduisez le résultat du lancé de dé par -30 si 
-            le champs de Geller est complètement fonctionnel (jusqu'à un minimum de 01). Ajoutez +30 au résultat du jet si le champs 
-            de Geller est éteins. <br>";
-            print incursion($_POST["gellarFieldOffline"],$_POST["gellarFieldDamaged"]);
-        }
-        if (($rencontresTirage >= 41) && ($rencontresTirage <= 50)) {
-            print "Stase ! <br> Si le navigateur ne peut pas guider le vaisseau pour éviter cette rencontre, le vaisseau se coince 
-            dans une fissure Warp avant de dériver une fois libéré, ajoutant 1d5 jours au voyage. <br>";
-        }
-        if (($rencontresTirage >= 51) && ($rencontresTirage <= 60)) {
-            print "Combustion Inhumaine spontanée ! <br> Le MJ choisit un des composants du vaisseau lors de cette rencontre. Celui 
-            ci prend immédiatement feu de manire inexpliquée. Voir les règles sur les incendies p.222 du livre de base. <br>";
-        }
-        if (($rencontresTirage >= 61) && ($rencontresTirage <= 70)) {
-            print "Tempête Warp ! <br> Si le Navigateur ne peut pas guider le vaisseau pour éviter cette rencontre, le vaisseau 
-            est donc frappé de plein fouet par une tempête Warp. <br>";
-            print tempete($_POST["gellarFieldDamaged"],$_POST["gellarFieldOffline"]);
-        }
-        if (($rencontresTirage >= 71) && ($rencontresTirage <= 80)) {
-            print "Récifs Aethériques ! <br> Si le Navigateur ne peut pas guider ce vaisseau pour éviter cette rencontre, 
-            la coque du vaisseau sera érraflée par des morceaux tordus et coupants de la fausse réalité. <br>";
-            print recifs($_POST["gellarFieldDamaged"],$_POST["gellarFieldOffline"]);
-        }
-        if (($rencontresTirage >= 81) && ($rencontresTirage <= 90)) {
-            print "Brèche Warp ! <br> Si le Navigateur ne peut pas contourner cette rencontre, le vaisseau s'enfonce dans 
-            une nébuleuse de non-réalitée. <br>";
-            print breche();
-        }
-        if (($rencontresTirage >= 91) && ($rencontresTirage <= 100)) {
-            print "Trou temporel ! <br> Si le Navigateur ne peut pas diriger le vaisseau dans une autre direction que celle de cette 
-            rencontre, le vaisseau est aspiré en dehors du Warp et reviens dans la réalité. Il faut se référer à <b>Sortir du Warp</b> page 34 <br>";
-            $severlyOffCourse=1;
-        }
-        if ($rencontresTirage >= 100) {
-            print "Trou temporel ! <br> Si le Navigateur ne peut pas diriger le vaisseau dans une autre direction que celle de cette 
-            rencontre, le vaisseau est aspiré en dehors du Warp et reviens dans la réalité. Il faut se référer à <b>Sortir du Warp</b> page 34 <br>";
-            $severlyOffCourse=1;
-        }
-        print "<br>";
     }
 
     // Le vaisseau sort du Warp sans Navigateurs
@@ -242,6 +226,7 @@ if ((isset($_POST["navigator"])) &&
     } else {
         $reEntry=rand(1, 100)+75;
     }
+
     if (($reEntry >= 1) && ($reEntry <= 25)) {
         print "Vous sortez du Warp avec un décallage de ";
         $realSpaceDays=rand(1, 5);

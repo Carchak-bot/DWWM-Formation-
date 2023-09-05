@@ -16,6 +16,14 @@ $psyniscienceCheck1result=0;
 $psyniscienceCheck1resultfinal=0;
 $psyniscienceCheckFailed=0;
 
+$moralCheck=0;
+$moralCheckResult=0;
+
+$leadershipCheck1=0;
+$leadershipCheck1result=0;
+$leadershipCheck1resultfinal=0;
+$leadershipCheckFailed=0;
+
 $frequenceRencontre=5;
 $rencontresNombre=0;
 $rencontres=array();

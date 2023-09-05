@@ -1,14 +1,10 @@
 <?php
 
-// Fichiers PHP inclus
+// Variables inclues
 
 require "variables.php";
 require "fonctions.php";
-
-/********************************************************************************************************
- ********************************************************************************************************
- ********************************************************************************************************/
-
+//______________________________________________________________________________________________
 // Début Programme
 
 print "<b>Coté MJ :</b> <br>";
@@ -66,7 +62,7 @@ if ((isset($_POST["gellarFieldDamaged"])) &&
 
 
 $duree=rand(1, 10);
-switch ($duree) {
+switch ($route) {
     case 1:
     case 2:
         $dureefinale=rand(1, 5);
@@ -151,78 +147,6 @@ if ((isset($_POST["navigator"])) &&
 
 } else {
     // Coté ou il n'y a pas de Navigateurs pour guider le vaisseau
-    //La chasse de la mauvaise chance
-
-    $moralCheck=rand(1, 100);
-    $moralCheckResult=($_POST["moral"] - $moralCheck);
-    if ($moralCheckResult >= 0) {
-        print "Avec un moral de <b>";
-        print $_POST["moral"];
-        print "</b> l'équipage fait un résultat de ";
-        print $moralCheckResult;
-        print " et est donc suffisement en forme pour ne pas teinter le warp de mauvais présages.<br><br>";
-    } else {
-        $leadershipCheck1=rand(1, 100);
-        switch ($leadershipCheck1) {
-            case ($_POST["leadership"]=="leadershipT"):
-                $leadershipCheck1result=($_POST["socCptn"]-$leadershipCheck1);
-                if ($leadershipCheck1result>=0) {
-                    $leadershipCheck1resultfinal=(($leadershipCheck1result/10)+(floor($_POST["socSurnatCptn"]/2)));
-                    print "La mauvaise chance a bien été chassée. <br>";
-                    print "L'équipage est rassuré avec ";
-                    print $leadershipCheck1resultfinal;
-                    print " degrés de réussites. <br><br>";
-                } else {
-                    print "L'équipage n'est pas rassuré et leur empreinte psychique amèneront certainement des ennuis..<br><br>";
-                    $badOmens=1;
-                }
-            break;
-            case ($_POST["leadership"]=="leadership+10"):
-                $leadershipCheck1result=(($_POST["socCptn"]+10)-$leadershipCheck1);
-                if ($leadershipCheck1result>=0) {
-                    $leadershipCheck1resultfinal=(($leadershipCheck1result/10)+(floor($_POST["socSurnatCptn"]/2)));
-                    print "La mauvaise chance a bien été chassée. <br>";
-                    print "L'équipage est rassuré avec ";
-                    print $leadershipCheck1resultfinal;
-                    print " degrés de réussites. <br><br>";
-                } else {
-                    print "L'équipage n'est pas rassuré et leur empreinte psychique amèneront certainement des ennuis..<br><br>";
-                    $badOmens=1;
-                }
-                break;      
-            case ($_POST["leadership"]=="leadership+20"):
-                $leadershipCheck1result=(($_POST["socCptn"]+20)-$leadershipCheck1);
-                if ($leadershipCheck1result>=0) {
-                    $leadershipCheck1resultfinal=(($leadershipCheck1result/10)+(floor($_POST["socSurnatCptn"]/2)));
-                    print "La mauvaise chance a bien été chassée. <br>";
-                    print "L'équipage est rassuré avec ";
-                    print $leadershipCheck1resultfinal;
-                    print " degrés de réussites. <br><br>";
-                } else {
-                    print "L'équipage n'est pas rassuré et leur empreinte psychique amèneront certainement des ennuis..<br><br>";
-                    $badOmens=1;
-                }
-                break;      
-            case ($_POST["leadership"]=="leadership+30"):
-                $leadershipCheck1result=(($_POST["socCptn"]+30)-$leadershipCheck1);
-                if ($leadershipCheck1result>=0) {
-                    $leadershipCheck1resultfinal=(($leadershipCheck1result/10)+(floor($_POST["socSurnatCptn"]/2)));
-                    print "La mauvaise chance a bien été chassée. <br>";
-                    print "L'équipage est rassuré avec ";
-                    print $leadershipCheck1resultfinal;
-                    print " degrés de réussites. <br><br>";
-                } else {
-                    print "L'équipage n'est pas rassuré et leur empreinte psychique amèneront certainement des ennuis..<br><br>";
-                    $badOmens=1;
-                }
-                break;
-            }
-        }
-    
-
-    
-
-    //La translation
 
     $translationHardcore=rand(1, 10);
     if ($translationHardcore >= 6) {
@@ -247,15 +171,6 @@ if ((isset($_POST["navigator"])) &&
         print "[";
         print $rencontresTirage;
         print "] ";
-
-        if ($badOmens==1) {
-            if  (($rencontresTirage==9) | ($rencontresTirage==19) | ($rencontresTirage==29) | ($rencontresTirage==39) |
-            ($rencontresTirage==49) | ($rencontresTirage==59) | ($rencontresTirage==69) | ($rencontresTirage==79) | ($rencontresTirage==89)
-            | ($rencontresTirage==91) | ($rencontresTirage==99) ) {
-
-            }
-        }
-
         if (($rencontresTirage >= 1) && ($rencontresTirage <= 20)) {
             print "Tout va bien. Le navigateur peut tenter de localiser l'Astronomican à nouveau tandis que tout
              personnages souffrant d'halucinations warp peut essayer de s'en débarasser à nouveau. <br>";
@@ -266,43 +181,33 @@ if ((isset($_POST["navigator"])) &&
              reçoivent un bonus de (+30) au test de Force Mentale. S'il ne l'est pas le test subit un malus de (-30) à la place. <br>";
         }
         if (($rencontresTirage >= 31) && ($rencontresTirage <= 40)) {
-            print "Prédateurs psychiques ! <br> Si cet effet se manifeste à bord d'un vaisseau, rouler une fois les dés sur la 
-            <b>table 2-8 Incursions Warp</b> (voir page 33) et appliquez le résultat. Réduisez le résultat du lancé de dé par -30 si 
-            le champs de Geller est complètement fonctionnel (jusqu'à un minimum de 01). Ajoutez +30 au résultat du jet si le champs 
-            de Geller est éteins. <br>";
+            print "Prédateurs psychiques ! <br>";
             print incursion($_POST["gellarFieldOffline"],$_POST["gellarFieldDamaged"]);
         }
         if (($rencontresTirage >= 41) && ($rencontresTirage <= 50)) {
-            print "Stase ! <br> Si le navigateur ne peut pas guider le vaisseau pour éviter cette rencontre, le vaisseau se coince 
-            dans une fissure Warp avant de dériver une fois libéré, ajoutant 1d5 jours au voyage. <br>";
+            print "Stase. <br>";
         }
         if (($rencontresTirage >= 51) && ($rencontresTirage <= 60)) {
-            print "Combustion Inhumaine spontanée ! <br> Le MJ choisit un des composants du vaisseau lors de cette rencontre. Celui 
-            ci prend immédiatement feu de manire inexpliquée. Voir les règles sur les incendies p.222 du livre de base. <br>";
+            print "Inhumaine combustion spontanée. <br>";
         }
         if (($rencontresTirage >= 61) && ($rencontresTirage <= 70)) {
-            print "Tempête Warp ! <br> Si le Navigateur ne peut pas guider le vaisseau pour éviter cette rencontre, le vaisseau 
-            est donc frappé de plein fouet par une tempête Warp. <br>";
+            print "Tempête Warp ! <br>";
             print tempete($_POST["gellarFieldDamaged"],$_POST["gellarFieldOffline"]);
         }
         if (($rencontresTirage >= 71) && ($rencontresTirage <= 80)) {
-            print "Récifs Aethériques ! <br> Si le Navigateur ne peut pas guider ce vaisseau pour éviter cette rencontre, 
-            la coque du vaisseau sera érraflée par des morceaux tordus et coupants de la fausse réalité. <br>";
+            print "Récifs Aethériques. <br>";
             print recifs($_POST["gellarFieldDamaged"],$_POST["gellarFieldOffline"]);
         }
         if (($rencontresTirage >= 81) && ($rencontresTirage <= 90)) {
-            print "Brèche Warp ! <br> Si le Navigateur ne peut pas contourner cette rencontre, le vaisseau s'enfonce dans 
-            une nébuleuse de non-réalitée. <br>";
+            print "Brèche Warp. <br>";
             print breche();
         }
         if (($rencontresTirage >= 91) && ($rencontresTirage <= 100)) {
-            print "Trou temporel ! <br> Si le Navigateur ne peut pas diriger le vaisseau dans une autre direction que celle de cette 
-            rencontre, le vaisseau est aspiré en dehors du Warp et reviens dans la réalité. Il faut se référer à <b>Sortir du Warp</b> page 34 <br>";
+            print "Trou temporel. <br>";
             $severlyOffCourse=1;
         }
         if ($rencontresTirage >= 100) {
-            print "Trou temporel ! <br> Si le Navigateur ne peut pas diriger le vaisseau dans une autre direction que celle de cette 
-            rencontre, le vaisseau est aspiré en dehors du Warp et reviens dans la réalité. Il faut se référer à <b>Sortir du Warp</b> page 34 <br>";
+            print "Trou temporel. <br>";
             $severlyOffCourse=1;
         }
         print "<br>";

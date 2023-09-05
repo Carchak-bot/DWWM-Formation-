@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="./assets/js/script.js" defer></script>
     <title>Voyage Warp</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
   </head>
   <body>
-    <main>
+    <main class="global">
       <header>
         <h1>Générateur de Voyage Warp pour la gamme FFG</h1>
       </header>
@@ -112,6 +112,14 @@
               value="yes"
             />
             Vrai<br />
+            <h4>Est ce que le champs de Geller est éteins ?</h4>
+            <label for="gellarFieldOffline"></label>
+            <input
+              name="gellarFieldOffline"
+              type="checkbox"
+              value="yes"
+            />
+            Oui<br />
             <h4>Moteur Warp endommagé ?</h4>
             <label for="warpEngineDamaged"></label>
             <input
@@ -128,14 +136,58 @@
               value="yes"
             />
             Oui<br />
-            <h4>Est ce que le champs de Geller est éteins ?</h4>
-            <label for="gellarFieldOffline"></label>
+            <h4>Est ce que le navigateur a pris du temps pour se protéger des mauvaises marées ?</h4>
+            <label for="illTidings"></label>
             <input
-              name="gellarFieldOffline"
+              name="illTidings"
               type="checkbox"
               value="yes"
             />
             Oui<br />
+          </div>
+          <div>
+          <h4>Valeur de Moral actuel du Vaisseau</h4>
+            <input type="text" name="moral" placeholder="Moral actuel" />
+          <h4>Valeur de Sociabilité du Capitaine/Missionnaire:</h4>
+            <input type="text" name="socCptn" placeholder="Sociabilité" />
+            <input
+              type="text"
+              name="socSurnatCptn"
+              placeholder="Sociabilité surnaturelle"
+            /><br />
+          <h4>Sa compétence (Command / Charm):</h4>
+            <label for="leadershipT"></label>
+            <input
+              name="leadership"
+              type="radio"
+              value="leadershipT"
+              required
+            />
+            Trained<br />
+            <label for="leadership+10"></label>
+            <input
+              name="leadership"
+              type="radio"
+              value="leadership+10"
+              required
+            />
+            +10<br />
+            <label for="leadership+20"></label>
+            <input
+              name="leadership"
+              type="radio"
+              value="leadership+20"
+              required
+            />
+            +20<br />
+            <label for="leadership+30"></label>
+            <input
+              name="leadership"
+              type="radio"
+              value="leadership+30"
+              required
+            />
+            +30<br />
           </div>
           <button type="submit">Voyager</button>
         </form>

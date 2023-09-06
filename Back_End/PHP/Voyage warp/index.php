@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Voyage Warp</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
   </head>
   <body>
     <main class="global">
@@ -148,6 +148,13 @@
           <div>
           <h4>Valeur de Moral actuel du Vaisseau</h4>
             <input type="text" name="moral" placeholder="Moral actuel" />
+          <h4>Valeur de caractéristique de l'équipage</h4>
+          <input type="text" name="crewRating" placeholder="Niveau moyen de l'équipage" />
+          <input
+              type="text"
+              name="nombrePNJImportant"
+              placeholder="Nombre de PNJ nommés et importants"
+            /><br />
           <h4>Valeur de Sociabilité du Capitaine/Missionnaire:</h4>
             <input type="text" name="socCptn" placeholder="Sociabilité" />
             <input

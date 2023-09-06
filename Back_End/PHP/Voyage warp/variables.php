@@ -24,6 +24,9 @@ $leadershipCheck1result=0;
 $leadershipCheck1resultfinal=0;
 $leadershipCheckFailed=0;
 
+$hallucinationCheck=0;
+$hallucinationCheckResult=0;
+
 $frequenceRencontre=5;
 $rencontresNombre=0;
 $rencontres=array();

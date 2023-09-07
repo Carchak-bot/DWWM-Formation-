@@ -26,6 +26,8 @@ $leadershipCheckFailed=0;
 
 $hallucinationCheck=0;
 $hallucinationCheckResult=0;
+$trueHallucination=0;
+$trueHallucinationResult=0;
 
 $frequenceRencontre=5;
 $rencontresNombre=0;

@@ -173,8 +173,43 @@ if ((isset($_POST["navigator"])) &&
                 echo "Le PNJ numéro ";
                 echo $i;
                 echo " a échoué son test de résistance mentale et est épris d'hallucinations jusqu'à ce qu'il ait une occasion 
-                de s'en débarasser.";
-                $hallucinationCheckResult = $hallucinationCheck-$_POST["crewRating"];
+                de s'en débarasser.<br>";
+                $hallucinationCheckResult = floor($hallucinationCheck-$_POST["crewRating"]);
+                echo "Le PNJ numéro ";
+                echo $i;
+                echo " a échoué avec ";
+                echo $hallucinationCheckResult;
+                echo " degré d'échecs.";
+                $trueHallucination=rand(1, 100);
+                $trueHallucinationResult=$trueHallucination+$hallucinationCheckResult;
+                if (($rencontresTirage >= 1) && ($rencontresTirage <= 40)) {
+                    echo "Phobie !";
+                }
+                if (($rencontresTirage >= 41) && ($rencontresTirage <= 70)) {
+                    echo "Malignancy !";
+                }
+                if (($rencontresTirage >= 71) && ($rencontresTirage <= 90)) {
+                    echo "The Horror ! The Horror !";
+                }
+                if (($rencontresTirage >= 91) && ($rencontresTirage <= 110)) {
+                    echo "The Flesh is Weak !";
+                }
+                if (($rencontresTirage >= 111) && ($rencontresTirage <= 130)) {
+                    echo "Mutants, Mutants everywhere !";
+                }
+                if (($rencontresTirage >= 131) && ($rencontresTirage <= 150)) {
+                    echo "Rêves de corruptions !";
+                }
+                if (($rencontresTirage >= 151) && ($rencontresTirage <= 170)) {
+                    echo "Désolation et désespoir.";
+                }
+                if ($rencontresTirage >= 171) {
+                    echo "Désillusion infernale.";
+                }
+            case ($hallucinationCheck<$_POST["crewRating"]):
+                echo "Le PNJ numéro ";
+                echo $i;
+                echo " a réussi son test et donc n'est atteins d'aucunes hallucinations.. Pour l'instant.<br>"; 
         }
     }
     

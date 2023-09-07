@@ -49,9 +49,10 @@ for(let ligne=1; ligne<9; ligne++) { //Première boucle pour les lignes
 document.write('</table>'); //Fin de l'élément table
 
 let maTable = document.querySelector('table');
+
 maTable.addEventListener("click", function(eventDetail) {    //on écoute le clic
-console.log(eventDetail);
-           //on regarde si la ou est le curseur c'est case-blanc ou case-noir
+console.log(eventDetail); //on regarde si la ou est le curseur c'est case-blanc ou case-noir
+eventDetail.target.classList.toggle('case-noir'); //On met la class casenoir ou on l'enlève fonction->cible->élément ciblé->ce qu'on change
 })      //on fait un switch
 
 

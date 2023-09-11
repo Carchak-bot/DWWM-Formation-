@@ -10,42 +10,22 @@ On affiche la lettre dans le mot secret si c'est bon
 */
 
 console.log('script chargé');
-// transforme le en Underscore
-// function underscore(words) {
-//     let underScore = [];
-//     for (let i = 0; i < words.length; i ++) {
-//         underScore[i] = "_";
-//     }
-//     return underScore;
-// }
-// Check si joueur met qu'une seule lettre
-// function checkLetter (letter) {
-//     while(letter.length > 1) {
-//         letter = prompt("Doucement sur le clavier !" + " " + String.fromCodePoint(0x1F609) + " " + "Une seule lettre à la fois.");
-//     }
-//     while(letter.length === 0) {
-//         letter = prompt("Veuillez entrer une lettre pour jouer.");
-//     }
-//     return letter;
-// }
 
-//___________________________________________________
-
-const motTrouvable = "Ultramar";
+const motTrouvable = "ULTRAMAR";
 console.log(motTrouvable);
 
-let motTrouveLe = motTrouvable.split('');
+const motTrouveLe = motTrouvable.split('');
 console.log(motTrouveLe);
 
 //Générer les boutons en js parce que gngngngn
 let boutonId = 1;
-let jeu = document.getElementById('jeu')
+let jeu = document.getElementById('jeu');
 
-let divLettre = document.createElement('div')
-divLettre.setAttribute("id", "lettre")
+let divLettre = document.createElement('div');
+divLettre.setAttribute("id", "lettre");
 //console.log(divLettre)
-
 jeu.appendChild(divLettre);
+
 //Trouve les caractères Ascii et crée les boutons
 for (let i=65; i <= 90; i++) {
     var imposteurClavier = document.createElement('button');
@@ -53,18 +33,65 @@ for (let i=65; i <= 90; i++) {
     imposteurClavier.textContent = lettre;
     imposteurClavier.setAttribute("id", boutonId);
     imposteurClavier.classList.add("bouton-lettre");
-
     //console.log(imposteurClavier);
-    
     divLettre.appendChild(imposteurClavier);
     boutonId++;
 }
-console.log(imposteurClavier);
+
+//div ou y'aura le jeu
+let divPendu = document.createElement('div');
+divPendu.setAttribute("id", "Pendu");
+
+
+for (let index = 0; index < motTrouveLe.length; index++) {
+    let spanLettre = document.createElement("span");
+    spanLettre.textContent = "-";
+    spanLettre.classList.add("span-lettre");
+    divPendu.append(spanLettre);
+
+}
+
+jeu.appendChild(divPendu);
+
+
+const arrayTirets = document.querySelectorAll(".span-lettre");
+let compteur = 1;
 //Crontroler si y'a un clic
 document.querySelectorAll(".bouton-lettre").forEach(bouton => {
     bouton.addEventListener("click", function(eventDetail) {
         console.log(eventDetail.target.innerText);
+        let lettreChoisie = eventDetail.target.innerText;
+        eventDetail.target.disabled=true;
+        console.log("Lettre choisie : ",lettreChoisie);
+
+       let lettreTrouvee = false
+       let gagne = true;
+        for (let l=0; l < motTrouveLe.length; l++) {
+            console.log("MotTrouveLe : ", motTrouveLe);
+            if (lettreChoisie == motTrouveLe[l]) {
+                arrayTirets[l].textContent = lettreChoisie;
+                      //Pitié les crochets
+                lettreTrouvee = true
+            }
+        }
+        if (lettreTrouvee == false) { //Le compteur de pendaison
+            compteur++;
+            console.log(compteur);
+        } else {
+            // Vérifiez la victoire
+            arrayTirets.forEach(spanLettre => {
+                if (spanLettre.innerText == "-") {
+                    console.log('konar')
+                    gagne = false;
+                }
+            })
+            if (gagne === true) {
+                alert('Gagné conar')
+            }
+        }
+        if (compteur == 8) { //La pendaison
+            alert("T'es mort")
+        }
     })
 });
-//Recup texte bouton
-//chercher correspondance dans l'array 
+

@@ -139,3 +139,15 @@ for (let ligne = 1; ligne < 9; ligne++) {
     }
 }
 
+//Cours du 12/09/2023
+
+let dateAjd = new Date();
+//Date d'au jour d'aujourd'hui du jour présent
+let prochain = new Date(2024, 6, 19);
+//Date anniv prochain d'Alain térieur
+let calculAge = prochain.getTime() - dateAjd.getTime()
+//Faire diff entre date théorique prochain anniv et ajd
+let distance = Math.floor((((calculAge/1000)/60)/60)/24)
+console.log("Il reste ", distance, " jours avant l'anniversaire d'Alain")
+//Transformer la diff en jour en arrondissant a l'inférieur
+

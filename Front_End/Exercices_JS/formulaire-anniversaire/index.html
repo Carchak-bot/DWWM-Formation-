@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./assets/js/script.js" defer></script>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Formulaire Anniversaire</title>
+</head>
+<body>
+    <h1>Cette application calcule combien de jours vous séparent de votre prochain anniversaire</h1>
+    <form action="#" method="post" name="formDateNaissance">
+        <label for="jour_naissance">
+            Entrez le jour de votre naissance
+            <input type="text" name="jourNaissance" id="jour_naissance" placeholder="jj">
+        </label>
+        <label for="mois_naissance">
+            Entrez le mois de votre naissance
+            <input type="text" name="moisNaissance" id="mois_naissance" placeholder="mm">
+        </label>
+        <label for="annee_naissance">
+            Entrez l'année de votre naissance
+            <input type="text" name="anneeNaissance" id="annee_naissance" placeholder="aaaa">
+        </label>
+        <input type="submit" value="Calculer">
+    </form>
+    <div class="resultat"></div>
+</body>
+</html>

@@ -1,11 +1,17 @@
 addEventListener("load", allPokemons);
 function getEvoPoke(select, unPokemon) {
     // Les evo
-    let evo = document.createElement('div')
+    let evo = document.createElement('div');
+    let textEvo = document.createElement('span');
+    textEvo.textContent = 'PreEvolution / Evolutions : ';
     infoReduites.appendChild(evo);
     let evoPrec = document.createElement('img');
+    evoPrec.setAttribute('class', 'evo')
     let evoActuelle = document.createElement('img');
+    evoActuelle.setAttribute('class', 'evo')
     let evoSuiv = document.createElement('img');
+    evoSuiv.setAttribute('class', 'evo')
+
 
     const select2 = unPokemon.apiPreEvolution.name
     fetch(`https://pokebuildapi.fr/api/v1/pokemon/${select2}`)
@@ -25,7 +31,7 @@ function getEvoPoke(select, unPokemon) {
     .then((suivEvo) => {
         evoSuiv.setAttribute("src",suivEvo.image);
     });
-
+    evo.appendChild(textEvo);
     evo.appendChild(evoPrec);
     evo.appendChild(evoActuelle);
     evo.appendChild(evoSuiv);
@@ -62,12 +68,13 @@ function getPokemon() {
 
         if (infoReduites.innerHTML == "") {
             let texteTitre = document.createElement('span');
-            texteTitre.textContent = 'Voici les informations connues de ' + select;
+            texteTitre.textContent = 'Voici les informations connues de ' + select + ' : ';
             infoReduites.appendChild(texteTitre);
         
             //Montrer l'image du pokémerde
             let pokemonImage = document.createElement('img');
             pokemonImage.setAttribute("src",unPokemon.image);
+            pokemonImage.setAttribute("class", 'pokePrincipal');
             infoReduites.appendChild(pokemonImage);
 
             let types = [];
@@ -77,18 +84,32 @@ function getPokemon() {
             let typeDiv = document.createElement('div');
             console.log(typeDiv.childElementCount);
             infoReduites.appendChild(typeDiv);
+            let textType = document.createElement('span')
+            textType.textContent = 'Type(s) : ';
+            typeDiv.appendChild(textType);
 
             for (let index = 0; index < types.length; index++) {
                 let imgType = document.createElement("img");
                 imgType.setAttribute("src", types[index])
+                imgType.setAttribute("class", 'type')
                 typeDiv.appendChild(imgType);
             }
-            getEvoPoke(select, unPokemon);
-            
+            getEvoPoke(select, unPokemon); 
         }
     });
 }
 
+let monBouton = document.querySelector('id', 'bouton');
+monBouton.addEventListener('click', pokeDetail);
+
+function pokeDetail(select) {
+    fetch(`https://pokebuildapi.fr/api/v1/pokemon/${select}`)
+    .then((response) => response.json())
+    .then((unPokemon) => {
+        let pokeDetailDiv = document.createElement('div');
+        pokeDetailDiv.setAttribute('class', 'detailsPoke')
+    });
+};
 
 
 

@@ -100,16 +100,15 @@ function getPokemon() {
 }
 
 let monBouton = document.querySelector('id', 'bouton');
-monBouton.addEventListener('click', pokeDetail);
+monBouton.addEventListener('click', () => {
+    console.log('clicked')
+    let pokeDetailDiv = document.createElement('div');
+    pokeDetailDiv.setAttribute('class', 'detailsPoke')
+    infoReduites.appendChild(pokeDetailDiv);
+    pokeDetailDiv.textContent= 'topkek'
+});
 
-function pokeDetail(select) {
-    fetch(`https://pokebuildapi.fr/api/v1/pokemon/${select}`)
-    .then((response) => response.json())
-    .then((unPokemon) => {
-        let pokeDetailDiv = document.createElement('div');
-        pokeDetailDiv.setAttribute('class', 'detailsPoke')
-    });
-};
+
 
 
 

@@ -155,6 +155,9 @@
               name="nombrePNJImportant"
               placeholder="Nombre de PNJ nommés et importants"
             /><br />
+            <h4>Nombre de PNJs importants :</h4>
+            <input type="text" name="nbrPNJ" placeholder="Nombres PNJs importants" />
+            <br>
           <h4>Valeur de Sociabilité du Capitaine/Missionnaire:</h4>
             <input type="text" name="socCptn" placeholder="Sociabilité" />
             <input

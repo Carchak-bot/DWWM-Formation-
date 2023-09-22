@@ -166,7 +166,7 @@ if ((isset($_POST["navigator"])) &&
     }
 
     
-    for ($i = 1; $i <= $_POST["nombrePNJImportant"]; $i++) {
+    for ($i = 1; $i <= $_POST["nbrPNJ"]; $i++) {
         $hallucinationCheck=rand(1, 100);
         switch ($hallucinationCheck) {
             case ($hallucinationCheck>$_POST["crewRating"]):
@@ -206,10 +206,12 @@ if ((isset($_POST["navigator"])) &&
                 if ($rencontresTirage >= 171) {
                     echo "Désillusion infernale.";
                 }
-            case ($hallucinationCheck<$_POST["crewRating"]):
+                break;
+            case ($hallucinationCheck<=$_POST["crewRating"]):
                 echo "Le PNJ numéro ";
                 echo $i;
                 echo " a réussi son test et donc n'est atteins d'aucunes hallucinations.. Pour l'instant.<br>"; 
+                break;
         }
     }
     

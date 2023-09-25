@@ -86,7 +86,7 @@ function rencontres($tempstrajetabsolu,$frequenceRencontre,$badOmens) {
         if ($badOmens==1) {
             if  (($rencontresTirage==9) | ($rencontresTirage==19) | ($rencontresTirage==29) | ($rencontresTirage==39) |
             ($rencontresTirage==49) | ($rencontresTirage==59) | ($rencontresTirage==69) | ($rencontresTirage==79) | ($rencontresTirage==89)
-            | ($rencontresTirage==91) | ($rencontresTirage==99) ) {
+            | ($rencontresTirage>=91) && ($rencontresTirage<=99) ) {
                 $rencontresTirage=35;
             }
         }
@@ -147,8 +147,7 @@ function rencontres($tempstrajetabsolu,$frequenceRencontre,$badOmens) {
 // Fonction Tempête Warp :
 
 function tempete($gellarFieldDamaged,$gellarFieldOffline) {
-    if ((isset($gellarFieldDamaged)) &&
-    ($gellarFieldDamaged==true)) {
+    if (($gellarFieldDamaged=='yes')) {
         $dgtsCrits=rand(1, 10);
     } else {
         $dgtsCrits=rand(1, 10);
@@ -157,8 +156,7 @@ function tempete($gellarFieldDamaged,$gellarFieldOffline) {
             $dgtsCrits=$d10;
         }
     }
-    if ((isset($gellarFieldOffline)) &&
-    ($gellarFieldOffline==true)) {
+    if (($gellarFieldOffline=='yes')) {
         $dgtsCrits=rand(1,10);
         $dgtsCrits=$dgtsCrits+2;
     } else {
@@ -179,14 +177,12 @@ function tempete($gellarFieldDamaged,$gellarFieldOffline) {
 // Fonction Récifs Aethériques ____________________________________________________
 
 function recifs($gellarFieldDamaged,$gellarFieldOffline) {
-    if ((isset($gellarFieldDamaged)) &&
-    ($gellarFieldDamaged==true)) {
+    if (($gellarFieldDamaged=='yes')) {
         $dgts=(rand(2, 20)+3);
     } else {
         $dgts=(rand(1, 10)+2);
     }
-    if ((isset($gellarFieldOffline)) &&
-    ($gellarFieldOffline==true)) {
+    if (($gellarFieldOffline=='yes')) {
         $dgts=(rand(4, 40)+5);
     } else {
         $dgts=(rand(1, 10)+2);
@@ -208,14 +204,11 @@ function recifs($gellarFieldDamaged,$gellarFieldOffline) {
 
 function incursion($gellarFieldOffline,$gellarFieldDamaged) {
     $incursionsWarp=rand(1, 100);
-    if (((isset($gellarFieldDamaged)) &&
-    ($gellarFieldDamaged==false)) &&
-        ((isset($gellarFieldOffline)) &&
-    ($gellarFieldOffline==false))) {
+    if ((($gellarFieldDamaged=='no')) &&
+        (($gellarFieldOffline=='no'))) {
         $incursionsWarp=floor($incursionsWarp-30);
     } else {
-        if ((isset($gellarFieldOffline)) &&
-        ($gellarFieldOffline==true)) {
+        if (($gellarFieldOffline=='yes')) {
             $incursionsWarp=$incursionsWarp+30;
         } else {
             $incursionsWarp=$incursionsWarp;
@@ -264,6 +257,76 @@ function breche() {
     }
     $text.= "<br>";
     return $text;
+}
+
+function psyniscienceNav($psyniscience,$per,$chartsFinished,$psyniscienceCheck1) {
+    //Psyniscience pour les augures
+    switch ($psyniscienceCheck1) {
+        case ($psyniscience=="psyniscienceT"):
+            $psyniscienceCheck1result=(($per+$chartsFinished)-$psyniscienceCheck1);
+            if ($psyniscienceCheck1result>=0) {
+                $psyniscienceCheck1resultfinal=(($psyniscienceCheck1result/10)+(floor($_POST["perSurnat"]/2)));
+                echo "Les augures sont bien interprêtés, le navigateur et sa suite peuvent avoir accès au résultat
+                du calcul de la durée du voyage Warp. <br>";
+                echo "Les augures sont interprêtés avec ";
+                echo $psyniscienceCheck1resultfinal;
+                echo " degrés de réussites. <br><br>";
+            } else {
+                $psyniscienceCheckFailed=rand(1, 5);
+                if ($psyniscienceCheckFailed==1) {
+                    $dureeEronner=($tempstrajettheorique*2);
+                }
+            }
+            break;
+        case ($psyniscience=="psyniscience+10"):
+            $psyniscienceCheck1result=(($per+10+$chartsFinished)-$psyniscienceCheck1);
+            if ($psyniscienceCheck1result>=0) {
+                $psyniscienceCheck1resultfinal=(($psyniscienceCheck1result/10)+(floor($_POST["perSurnat"]/2)));
+                echo "Les augures sont bien interprêtés, le navigateur et sa suite peuvent avoir accès au résultat
+                du calcul de la durée du voyage Warp. <br>";
+                echo "Les augures sont interprêtés avec ";
+                echo $psyniscienceCheck1resultfinal;
+                echo " degrés de réussites. <br><br>";
+            } else {
+                $psyniscienceCheckFailed=rand(1, 5);
+                if ($psyniscienceCheckFailed==1) {
+                    $dureeEronner=($tempstrajettheorique*2);
+                }
+            }
+            break;
+        case ($psyniscience=="psyniscience+20"):
+            $psyniscienceCheck1result=(($per+20+$chartsFinished)-$psyniscienceCheck1);
+            if ($psyniscienceCheck1result>=0) {
+                $psyniscienceCheck1resultfinal=(($psyniscienceCheck1result/10)+(floor($_POST["perSurnat"]/2)));
+                echo "Les augures sont bien interprêtés, le navigateur et sa suite peuvent avoir accès au résultat
+                du calcul de la durée du voyage Warp. <br>";
+                echo "Les augures sont interprêtés avec ";
+                echo $psyniscienceCheck1resultfinal;
+                echo " degrés de réussites. <br><br>";
+            } else {
+                $psyniscienceCheckFailed=rand(1, 5);
+                if ($psyniscienceCheckFailed==1) {
+                    $dureeEronner=($tempstrajettheorique*2);
+                }
+            }
+            break;
+        case ($psyniscience=="psyniscience+30"):
+            $psyniscienceCheck1result=(($per+30+$chartsFinished)-$psyniscienceCheck1);
+            if ($psyniscienceCheck1result>=0) {
+                $psyniscienceCheck1resultfinal=(($psyniscienceCheck1result/10)+(floor($_POST["perSurnat"]/2)));
+                echo "Les augures sont bien interprêtés, le navigateur et sa suite peuvent avoir accès au résultat
+                du calcul de la durée du voyage Warp. <br>";
+                echo "Les augures sont interprêtés avec ";
+                echo $psyniscienceCheck1resultfinal;
+                echo " degrés de réussites. <br><br>";
+            } else {
+                $psyniscienceCheckFailed=rand(1, 5);
+                if ($psyniscienceCheckFailed==1) {
+                    $dureeEronner=($tempstrajettheorique*2);
+                }
+            }
+            break;
+    }
 }
 
 

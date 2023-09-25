@@ -108,7 +108,13 @@
             <label for="gellarFieldDamaged"></label>
             <input
               name="gellarFieldDamaged"
-              type="checkbox"
+              type="radio"
+              value="no"
+            />
+            Faux
+            <input
+              name="gellarFieldDamaged"
+              type="radio"
               value="yes"
             />
             Vrai<br />
@@ -116,7 +122,13 @@
             <label for="gellarFieldOffline"></label>
             <input
               name="gellarFieldOffline"
-              type="checkbox"
+              type="radio"
+              value="no"
+            />
+            Non
+            <input
+              name="gellarFieldOffline"
+              type="radio"
               value="yes"
             />
             Oui<br />
@@ -136,6 +148,43 @@
               value="yes"
             />
             Oui<br />
+            <h4>Est ce que le Navigateur possède des cartes de routes Warp ?</h4>
+            <label for="warpCharts"></label>
+            <input
+              name="warpCharts"
+              type="radio"
+              value="none"
+            />
+            Non
+            <label for="warpCharts"></label>
+            <input
+              name="warpCharts"
+              type="radio"
+              value="yes"
+            />
+            Oui
+            <label for="warpCharts"></label>
+            <input
+              name="warpCharts"
+              type="radio"
+              value="yesDetailed"
+            />
+            Oui et détaillées<br />
+            <h4>Est ce que le Navigateur a fait ses cartes lui même ?</h4>
+            <label for="warpChartsCreator"></label>
+            <input
+              name="warpChartsCreator"
+              type="radio"
+              value="no"
+            />
+            Non
+            <label for="warpChartsCreator"></label>
+            <input
+              name="warpChartsCreator"
+              type="radio"
+              value="yes"
+            />
+            Oui <br>
             <h4>Est ce que le navigateur a pris du temps pour se protéger des mauvaises marées ?</h4>
             <label for="illTidings"></label>
             <input
@@ -155,9 +204,6 @@
               name="nombrePNJImportant"
               placeholder="Nombre de PNJ nommés et importants"
             /><br />
-            <h4>Nombre de PNJs importants :</h4>
-            <input type="text" name="nbrPNJ" placeholder="Nombres PNJs importants" />
-            <br>
           <h4>Valeur de Sociabilité du Capitaine/Missionnaire:</h4>
             <input type="text" name="socCptn" placeholder="Sociabilité" />
             <input

@@ -16,6 +16,9 @@ $psyniscienceCheck1result=0;
 $psyniscienceCheck1resultfinal=0;
 $psyniscienceCheckFailed=0;
 
+$charts=0;
+$chartsFinished=0;
+
 $moralCheck=0;
 $moralCheckResult=0;
 
@@ -49,5 +52,6 @@ $severlyOffCourse=0;
 $dgtsCrits=0;
 $dgts=0;
 $d10=0;
+$d5=0;
 
 ?>

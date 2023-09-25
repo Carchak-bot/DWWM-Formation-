@@ -13,11 +13,12 @@ require "fonctions.php";
 
 echo "<b>Coté MJ :</b> <br>";
 
+// echo $_POST["gellarFieldDamaged"];
+// echo $_POST["gellarFieldOffline"];
 
 //Prise en compte du champs de Geller endommagé
 
-if ((isset($_POST["gellarFieldDamaged"])) &&
- ($_POST["gellarFieldDamaged"]==true)) {
+if (($_POST["gellarFieldDamaged"]=='yes')) {
     $route=rand(1, 10);
     $routegellarfieldDamaged=rand(1, 10);
     if ($routegellarfieldDamaged >= $route) {
@@ -127,25 +128,46 @@ if ((isset($_POST["navigator"])) &&
     //Coté ou il y a un navigateur pour guider le vaisseau
 
     $psyniscienceCheck1=rand(1, 100);
-    if ($_POST["psyniscience"]=="psyniscienceT") {
-        $psyniscienceCheck1result=($_POST["per"]-$psyniscienceCheck1);
-        if ($psyniscienceCheck1result>=0) {
-            $psyniscienceCheck1resultfinal=(($psyniscienceCheck1result/10)+(floor($_POST["perSurnat"]/2)));
-            echo "Les augures sont bien interprêtés, le navigateur et sa suite peuvent avoir accès au résultat
-             du calcul de la durée du voyage Warp. <br>";
-            echo "Les augures sont interprêtés avec ";
-            echo $psyniscienceCheck1resultfinal;
-            echo " degrés de réussites. <br><br>";
-        }
-    } else {
-        $psyniscienceCheckFailed=rand(1, 5);
-        if ($psyniscienceCheckFailed==1) {
-            $dureeEronner=($tempstrajettheorique*2);
-
-        }
+//Cartes Warp et bonus à la psyniscience
+    switch ($charts) {
+        case ($_POST["warpCharts"]=="none"):
+            $charts = 0;
+        case ($_POST["warpCharts"]=="yes"):
+            $charts = 10;
+            if (($_POST["warpChartsCreator"]=="yes")) {
+                $chartsFinished = $charts+10;
+            }
+        case ($_POST["warpCharts"]=="yesDetailed"):
+            $charts = 20;
+            if (($_POST["warpChartsCreator"]=="yes")) {
+                $chartsFinished = $charts+10;
+            }
     }
 
+//Psyniscience pour les augures
+    echo "[";
+    echo $psyniscienceCheck1;
+    echo "] ! <br>";
+    psyniscienceNav($_POST["psyniscience"],$_POST["per"],$chartsFinished,$psyniscienceCheck1);
 
+    while  (($psyniscienceCheck1==9) | ($psyniscienceCheck1==19) | ($psyniscienceCheck1==29) | ($psyniscienceCheck1==39) |
+        ($psyniscienceCheck1==49) | ($psyniscienceCheck1==59) | ($psyniscienceCheck1==69) | ($psyniscienceCheck1==79) | 
+        ($psyniscienceCheck1==89) | ($psyniscienceCheck1>=90) && ($psyniscienceCheck1<=99) ) {
+                echo "Le navigateur détecte qu'une tempête Warp se forme et avise qu'il vaudrait mieux attendre ";
+                $d5=rand(1, 5);
+                echo $d5;
+                echo " jours pour qu'elle passe. Sinon vous entrez dans une tempête Warp. <br><br>";
+                echo "Si vous entrez tout de même dans le Warp en pleine tempête :  <br>";
+                echo tempete($_POST["gellarFieldDamaged"],$_POST["gellarFieldOffline"]);
+                echo "<br><br>";
+                echo "Si le vaisseau pratique les rites d'appaisements alors les augures doivent être relus. <br><br>";
+                $psyniscienceCheck1=rand(1, 100);
+                echo "[";
+                echo $psyniscienceCheck1;
+                echo "] ! <br>";
+                psyniscienceNav($_POST["psyniscience"],$_POST["per"],$chartsFinished,$psyniscienceCheck1);
+                
+            }
 
 
 
@@ -166,51 +188,49 @@ if ((isset($_POST["navigator"])) &&
     }
 
     
-    for ($i = 1; $i <= $_POST["nbrPNJ"]; $i++) {
+    for ($i = 1; $i <= $_POST["nombrePNJImportant"]; $i++) {
         $hallucinationCheck=rand(1, 100);
         switch ($hallucinationCheck) {
-            case ($hallucinationCheck>$_POST["crewRating"]):
+            case ($hallucinationCheck > $_POST["crewRating"]):
                 echo "Le PNJ numéro ";
                 echo $i;
                 echo " a échoué son test de résistance mentale et est épris d'hallucinations jusqu'à ce qu'il ait une occasion 
                 de s'en débarasser.<br>";
                 $hallucinationCheckResult = floor($hallucinationCheck-$_POST["crewRating"]);
-                echo "Le PNJ numéro ";
-                echo $i;
-                echo " a échoué avec ";
+                echo "Il a échoué avec ";
                 echo $hallucinationCheckResult;
-                echo " degré d'échecs.";
+                echo " degré d'échecs et est atteins de l'hallucination : ";
                 $trueHallucination=rand(1, 100);
                 $trueHallucinationResult=$trueHallucination+$hallucinationCheckResult;
-                if (($rencontresTirage >= 1) && ($rencontresTirage <= 40)) {
-                    echo "Phobie !";
+                if (($trueHallucinationResult >= 1) && ($trueHallucinationResult <= 40)) {
+                    echo "Phobie ! <br><br>";
                 }
-                if (($rencontresTirage >= 41) && ($rencontresTirage <= 70)) {
-                    echo "Malignancy !";
+                if (($trueHallucinationResult >= 41) && ($trueHallucinationResult <= 70)) {
+                    echo "Malignancy ! <br><br>";
                 }
-                if (($rencontresTirage >= 71) && ($rencontresTirage <= 90)) {
-                    echo "The Horror ! The Horror !";
+                if (($trueHallucinationResult >= 71) && ($trueHallucinationResult <= 90)) {
+                    echo "The Horror ! The Horror ! <br><br>";
                 }
-                if (($rencontresTirage >= 91) && ($rencontresTirage <= 110)) {
-                    echo "The Flesh is Weak !";
+                if (($trueHallucinationResult >= 91) && ($trueHallucinationResult <= 110)) {
+                    echo "The Flesh is Weak ! <br><br>";
                 }
-                if (($rencontresTirage >= 111) && ($rencontresTirage <= 130)) {
-                    echo "Mutants, Mutants everywhere !";
+                if (($trueHallucinationResult >= 111) && ($trueHallucinationResult <= 130)) {
+                    echo "Mutants, Mutants everywhere ! <br><br>";
                 }
-                if (($rencontresTirage >= 131) && ($rencontresTirage <= 150)) {
-                    echo "Rêves de corruptions !";
+                if (($trueHallucinationResult >= 131) && ($trueHallucinationResult <= 150)) {
+                    echo "Rêves de corruptions ! <br><br>";
                 }
-                if (($rencontresTirage >= 151) && ($rencontresTirage <= 170)) {
-                    echo "Désolation et désespoir.";
+                if (($trueHallucinationResult >= 151) && ($trueHallucinationResult <= 170)) {
+                    echo "Désolation et désespoir. <br><br>";
                 }
-                if ($rencontresTirage >= 171) {
-                    echo "Désillusion infernale.";
+                if ($trueHallucinationResult >= 171) {
+                    echo "Désillusion infernale. <br><br>";
                 }
                 break;
-            case ($hallucinationCheck<=$_POST["crewRating"]):
+            case ($hallucinationCheck <= $_POST["crewRating"]):
                 echo "Le PNJ numéro ";
                 echo $i;
-                echo " a réussi son test et donc n'est atteins d'aucunes hallucinations.. Pour l'instant.<br>"; 
+                echo " a réussi son test et donc n'est atteins d'aucunes hallucinations.. Pour l'instant.<br><br>"; 
                 break;
         }
     }

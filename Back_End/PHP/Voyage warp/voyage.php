@@ -1,4 +1,5 @@
-````<?php
+````
+<?php
 
 // Fichiers PHP inclus
 
@@ -6,7 +7,6 @@ require "variables.php";
 require "fonctions.php";
 
 /********************************************************************************************************
- ********************************************************************************************************
  ********************************************************************************************************/
 
 // Début Programme
@@ -18,19 +18,19 @@ echo "<b>Coté MJ :</b> <br>";
 
 //Prise en compte du champs de Geller endommagé
 
-if (($_POST["gellarFieldDamaged"]=='yes')) {
-    $route=rand(1, 10);
-    $routegellarfieldDamaged=rand(1, 10);
+if (($_POST["gellarFieldDamaged"] == 'yes')) {
+    $route = rand(1, 10);
+    $routegellarfieldDamaged = rand(1, 10);
     if ($routegellarfieldDamaged >= $route) {
-        $route=$routegellarfieldDamaged;
-    } 
- } else {
-    $route=rand(1, 10);
+        $route = $routegellarfieldDamaged;
+    }
+} else {
+    $route = rand(1, 10);
 }
 
 //Calcul de la durée de voyage initiale
- // test switch
- switch ($route) {
+// test switch
+switch ($route) {
     case 1:
     case 2:
     case 3:
@@ -63,45 +63,47 @@ if (($_POST["gellarFieldDamaged"]=='yes')) {
         echo "Route Byzantine. <br>";
         $routemultiple = 3;
         break;
- }
+}
 
 
-$duree=rand(1, 10);
+$duree = rand(1, 10);
 switch ($duree) {
     case 1:
     case 2:
-        $dureefinale=rand(1, 5);
+        $dureefinale = rand(1, 5);
         break;
     case 3:
     case 4:
-        $dureefinale=(rand(1, 5)+5);
+        $dureefinale = (rand(1, 5) + 5);
         break;
     case 5:
     case 6:
-        $dureefinale=(rand(2, 20)+10);
+        $dureefinale = (rand(2, 20) + 10);
         break;
     case 7:
     case 8:
-        $dureefinale=(rand(3, 30)+50);
+        $dureefinale = (rand(3, 30) + 50);
         break;
     case 9:
-        $dureefinale=(rand(4, 40)+150);
+        $dureefinale = (rand(4, 40) + 150);
         break;
     case 10:
-        $dureefinale=(rand(5, 50)+250);
+        $dureefinale = (rand(5, 50) + 250);
         break;
- }
+}
 
 
 //Prise en compte du type de route sur la durée du voyage basique
 
-$tempstrajet=($dureefinale*$routemultiple);
+$tempstrajet = ($dureefinale * $routemultiple);
 
-if ((isset($_POST["warpEngineDamaged"])) &&
- ($_POST["warpEngineDamaged"]==true)) {
-    $tempstrajettheorique=($tempstrajet*2);
+if (
+    (isset($_POST["warpEngineDamaged"])) &&
+    ($_POST["warpEngineDamaged"] == true)
+) {
+    $tempstrajettheorique = ($tempstrajet * 2);
 } else {
-    $tempstrajettheorique=$tempstrajet;
+    $tempstrajettheorique = $tempstrajet;
 }
 
 echo "La durée de base était de ";
@@ -110,8 +112,10 @@ echo " Jours. <br>";
 
 //Prise en compte du moteur warp endommagé
 
-if ((isset($_POST["warpEngineDamaged"])) &&
- ($_POST["warpEngineDamaged"]==true)) {
+if (
+    (isset($_POST["warpEngineDamaged"])) &&
+    ($_POST["warpEngineDamaged"] == true)
+) {
     echo "Pour un total théorique de ";
     echo $tempstrajettheorique;
     echo " Jours. Dûs aux moteurs warp endommagés. <br> <br>";
@@ -123,51 +127,98 @@ if ((isset($_POST["warpEngineDamaged"])) &&
 
 echo "<b>Coté PJ :</b> <br>";
 
-if ((isset($_POST["navigator"])) &&
-($_POST["navigator"]==true)) {
+if (
+    (isset($_POST["navigator"])) &&
+    ($_POST["navigator"] == true)
+) {
     //Coté ou il y a un navigateur pour guider le vaisseau
 
-    $psyniscienceCheck1=rand(1, 100);
-//Cartes Warp et bonus à la psyniscience
+    $psyniscienceCheck1 = rand(1, 100);
+    //Cartes Warp et bonus à la psyniscience
     switch ($charts) {
-        case ($_POST["warpCharts"]=="none"):
+        case ($_POST["warpCharts"] == "none"):
             $charts = 0;
-        case ($_POST["warpCharts"]=="yes"):
+        case ($_POST["warpCharts"] == "yes"):
             $charts = 10;
-            if (($_POST["warpChartsCreator"]=="yes")) {
-                $chartsFinished = $charts+10;
+            if (($_POST["warpChartsCreator"] == "yes")) {
+                $chartsFinished = $charts + 10;
             }
-        case ($_POST["warpCharts"]=="yesDetailed"):
+        case ($_POST["warpCharts"] == "yesDetailed"):
             $charts = 20;
-            if (($_POST["warpChartsCreator"]=="yes")) {
-                $chartsFinished = $charts+10;
+            if (($_POST["warpChartsCreator"] == "yes")) {
+                $chartsFinished = $charts + 10;
             }
     }
 
-//Psyniscience pour les augures
+    //Psyniscience pour les augures
     echo "[";
     echo $psyniscienceCheck1;
     echo "] ! <br>";
-    psyniscienceNav($_POST["psyniscience"],$_POST["per"],$chartsFinished,$psyniscienceCheck1);
+    psyniscienceNav($_POST["psyniscience"], $_POST["per"], $chartsFinished, $psyniscienceCheck1, $dureeEronner, $tempstrajettheorique);
 
-    while  (($psyniscienceCheck1==9) | ($psyniscienceCheck1==19) | ($psyniscienceCheck1==29) | ($psyniscienceCheck1==39) |
-        ($psyniscienceCheck1==49) | ($psyniscienceCheck1==59) | ($psyniscienceCheck1==69) | ($psyniscienceCheck1==79) | 
-        ($psyniscienceCheck1==89) | ($psyniscienceCheck1>=90) && ($psyniscienceCheck1<=99) ) {
-                echo "Le navigateur détecte qu'une tempête Warp se forme et avise qu'il vaudrait mieux attendre ";
-                $d5=rand(1, 5);
-                echo $d5;
-                echo " jours pour qu'elle passe. Sinon vous entrez dans une tempête Warp. <br><br>";
-                echo "Si vous entrez tout de même dans le Warp en pleine tempête :  <br>";
-                echo tempete($_POST["gellarFieldDamaged"],$_POST["gellarFieldOffline"]);
-                echo "<br><br>";
-                echo "Si le vaisseau pratique les rites d'appaisements alors les augures doivent être relus. <br><br>";
-                $psyniscienceCheck1=rand(1, 100);
-                echo "[";
-                echo $psyniscienceCheck1;
-                echo "] ! <br>";
-                psyniscienceNav($_POST["psyniscience"],$_POST["per"],$chartsFinished,$psyniscienceCheck1);
-                
-            }
+    while (
+        ($psyniscienceCheck1 == 9) | ($psyniscienceCheck1 == 19) | ($psyniscienceCheck1 == 29) | ($psyniscienceCheck1 == 39) |
+        ($psyniscienceCheck1 == 49) | ($psyniscienceCheck1 == 59) | ($psyniscienceCheck1 == 69) | ($psyniscienceCheck1 == 79) |
+        ($psyniscienceCheck1 == 89) | ($psyniscienceCheck1 >= 90) && ($psyniscienceCheck1 <= 99)
+    ) {
+        echo "Le navigateur détecte qu'une tempête Warp se forme et avise qu'il vaudrait mieux attendre ";
+        $d5 = rand(1, 5);
+        echo $d5;
+        echo " jours pour qu'elle passe. Sinon vous entrez dans une tempête Warp. <br><br>";
+        echo "Si vous entrez tout de même dans le Warp en pleine tempête :  <br>";
+        echo tempete($_POST["gellarFieldDamaged"], $_POST["gellarFieldOffline"]);
+        echo "<br><br>";
+        echo "Si le vaisseau pratique les rites d'appaisements alors les augures doivent être relus. <br><br>";
+        $psyniscienceCheck1 = rand(1, 100);
+        echo "[";
+        echo $psyniscienceCheck1;
+        echo "] ! <br>";
+        psyniscienceNav($_POST["psyniscience"], $_POST["per"], $chartsFinished, $psyniscienceCheck1, $dureeEronner, $tempstrajettheorique);
+    }
+
+    //Se protéger des mauvaises marées
+
+    if (isset($_POST["illTidings"]) && 
+        ($_POST["illTidings"] == true)) {
+        $badTidings = 0;
+    } else {
+        $badTidings = 1;
+    }
+
+    //La chasse de la mauvaise chance
+
+    echo badOmens($_POST["moral"], $_POST["leadership"], $_POST["socCptn"], $_POST["socSurnatCptn"]);
+
+    //Localiser l'astronomican
+    $psyniscienceCheck2 = rand(1, 100);
+    switch ($route) {
+        case 1:
+        case 2:
+        case 3:
+            //psyniscience +20
+            $bonus = 20;
+            psyniscienceAstro($_POST["psyniscience"], $_POST["per"], $psyniscienceCheck1, $psyniscienceCheck2Failed, $dureeEronner, $tempstrajettheorique, $bonus, $bonusNav);
+            break;
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+            //psyniscience normale
+            $bonus = 0;
+            psyniscienceAstro($_POST["psyniscience"], $_POST["per"], $psyniscienceCheck1, $psyniscienceCheck2Failed, $dureeEronner, $tempstrajettheorique, $bonus, $bonusNav);
+            break;
+        case 9:
+            //psyniscience -20
+            $bonus = -20;
+            psyniscienceAstro($_POST["psyniscience"], $_POST["per"], $psyniscienceCheck1, $psyniscienceCheck2Failed, $dureeEronner, $tempstrajettheorique, $bonus, $bonusNav);
+            break;
+        case 10:
+            //psyniscience normale
+            $bonus = 0;
+            psyniscienceAstro($_POST["psyniscience"], $_POST["per"], $psyniscienceCheck1, $psyniscienceCheck2Failed, $dureeEronner, $tempstrajettheorique, $bonus, $bonusNav);
+            break;
+    }
 
 
 
@@ -176,32 +227,32 @@ if ((isset($_POST["navigator"])) &&
 
     //La chasse de la mauvaise chance
 
-    echo badOmens($_POST["moral"],$_POST["leadership"],$_POST["socCptn"],$_POST["socSurnatCptn"]);
+    echo badOmens($_POST["moral"], $_POST["leadership"], $_POST["socCptn"], $_POST["socSurnatCptn"]);
 
     //La translation
 
-    $translationHardcore=rand(1, 10);
+    $translationHardcore = rand(1, 10);
     if ($translationHardcore >= 6) {
         echo "Vous entrez dans le warp en pleine tempête warp. <br>";
-        echo tempete($_POST["gellarFieldDamaged"],$_POST["gellarFieldOffline"]);
+        echo tempete($_POST["gellarFieldDamaged"], $_POST["gellarFieldOffline"]);
         echo "<br>";
     }
 
-    
+
     for ($i = 1; $i <= $_POST["nombrePNJImportant"]; $i++) {
-        $hallucinationCheck=rand(1, 100);
+        $hallucinationCheck = rand(1, 100);
         switch ($hallucinationCheck) {
             case ($hallucinationCheck > $_POST["crewRating"]):
                 echo "Le PNJ numéro ";
                 echo $i;
                 echo " a échoué son test de résistance mentale et est épris d'hallucinations jusqu'à ce qu'il ait une occasion 
                 de s'en débarasser.<br>";
-                $hallucinationCheckResult = floor($hallucinationCheck-$_POST["crewRating"]);
+                $hallucinationCheckResult = floor($hallucinationCheck - $_POST["crewRating"]);
                 echo "Il a échoué avec ";
                 echo $hallucinationCheckResult;
                 echo " degré d'échecs et est atteins de l'hallucination : ";
-                $trueHallucination=rand(1, 100);
-                $trueHallucinationResult=$trueHallucination+$hallucinationCheckResult;
+                $trueHallucination = rand(1, 100);
+                $trueHallucinationResult = $trueHallucination + $hallucinationCheckResult;
                 if (($trueHallucinationResult >= 1) && ($trueHallucinationResult <= 40)) {
                     echo "Phobie ! <br><br>";
                 }
@@ -230,35 +281,35 @@ if ((isset($_POST["navigator"])) &&
             case ($hallucinationCheck <= $_POST["crewRating"]):
                 echo "Le PNJ numéro ";
                 echo $i;
-                echo " a réussi son test et donc n'est atteins d'aucunes hallucinations.. Pour l'instant.<br><br>"; 
+                echo " a réussi son test et donc n'est atteins d'aucunes hallucinations.. Pour l'instant.<br><br>";
                 break;
         }
     }
-    
+
 
     // Le voyage
-    $tempstrajetabsolu=($tempstrajettheorique*4);
+    $tempstrajetabsolu = ($tempstrajettheorique * 4);
     echo "De part le manque de navigateur le voyage va durer ";
     echo $tempstrajetabsolu;
     echo "jours. <br> <br>";
 
     //Fonction de rencontres Warp appellant les 3 paramètres externes
-    echo rencontres($tempstrajetabsolu,$frequenceRencontre,$badOmens);
-   
+    echo rencontres($tempstrajetabsolu, $frequenceRencontre, $badOmens);
+
     // Le vaisseau sort du Warp sans Navigateurs
-    if ($severlyOffCourse==1) {
-        $reEntry=(rand(1, 100)+40+75);
+    if ($severlyOffCourse == 1) {
+        $reEntry = (rand(1, 100) + 40 + 75);
     } else {
-        $reEntry=rand(1, 100)+75;
+        $reEntry = rand(1, 100) + 75;
     }
     if (($reEntry >= 1) && ($reEntry <= 25)) {
         echo "Vous sortez du Warp avec un décallage de ";
-        $realSpaceDays=rand(1, 5);
+        $realSpaceDays = rand(1, 5);
         echo " jours de voyage d'espace réel de votre destination.";
     }
     if (($reEntry >= 26) && ($reEntry <= 50)) {
         echo "Vous sortez du Warp avec un décallage de ";
-        $realSpaceDays=rand(1, 10);
+        $realSpaceDays = rand(1, 10);
         echo " jours de voyage d'espace réel de votre destination.";
     }
     if (($reEntry >= 51) && ($reEntry <= 75)) {
@@ -274,13 +325,13 @@ if ((isset($_POST["navigator"])) &&
     if (($reEntry >= 121) && ($reEntry <= 140)) {
         echo "Vous sortez du Warp au niveau d'une localisation choisie au hasard dans une région choisie au hasard 
         dans le même secteur. ";
-        $realSpaceDays=rand(1, 5);
-        $beforeAfter=rand(0, 1);
-        if ($beforeAfter==1) {
+        $realSpaceDays = rand(1, 5);
+        $beforeAfter = rand(0, 1);
+        if ($beforeAfter == 1) {
             echo $realSpaceDays;
             echo " ans après votre départ.";
         }
-        if ($beforeAfter==0) {
+        if ($beforeAfter == 0) {
             echo $realSpaceDays;
             echo " ans avant votre départ.";
         }

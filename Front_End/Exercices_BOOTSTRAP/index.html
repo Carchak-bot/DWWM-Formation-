@@ -12,20 +12,201 @@
     />
   </head>
   <body>
+    <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <img src="./assets/img/logo-ac-dc.png" class="d-block w-25" alt="">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="#">Acceuil</a>
+            <a class="nav-link" href="#">Membres</a>
+            <a class="nav-link" href="#">Discographie</a>
+            <a class="nav-link" href="#">Agenda des Concerts</a>
+            <a class="nav-link" href="#">Contact</a>
+          </div>
+        </div>
+      </div>
+    </nav>
     <header>
-        <nav>
-            <span><a href="">Acceuil</a></span>
-            <span><a href="">Membres</a></span>
-            <span><a href="">Discographie</a></span>
-            <span><a href="">Agenda des Concerts</a></span>
-            <span><a href="">Contact</a></span>
-        </nav>
-        <article>
-            <img src="" alt="">
-        </article>
+      <article id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <section class="carousel-inner">
+          <figure class="carousel-item active">
+            <img src="./assets/img/ac-dc-1.png" class="d-block w-100" alt="">
+          </figure>
+          <figure class="carousel-item">
+            <img src="./assets/img/ac-dc-2.png" class="d-block w-100" alt="">
+          </figure>
+          <figure class="carousel-item">
+            <img src="./assets/img/ac-dc-3.png" class="d-block w-100" alt="">
+          </figure>
+        </section>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+      </article>
     </header>
+    <!-- div.container>div.row>div.col*3 -->
     <main>
-        
+      <section class="container text-center">
+        <article class="row">
+          <img src="./assets/img/logo-ac-dc.png" class="d-block w-25" alt="" class="col">
+          <h2 class="col">Les membres du groupe</h2>
+        </article>
+        <article class="row">
+          <figure class="col col-sm-6">
+            <img src="./assets/img/brian-johnson.png" class="img-thumbnail w-100" alt="">
+            <figcaption>Brian Johnson (Chant)</figcaption>
+          </figure>
+          <figure class="col col-sm-6">
+            <img src="./assets/img/angus-young.png" class="img-thumbnail w-100" alt="">
+            <figcaption>Angus Young (Guitare Solo)</figcaption>
+          </figure>
+          <figure class="col col-sm-6">
+            <img src="./assets/img/steve-young.png" class="img-thumbnail w-100" alt="">
+            <figcaption>Steve Young (Guitare)</figcaption>
+          </figure>
+          <figure class="col col-sm-6">
+            <img src="./assets/img/cliff-williams.png" class="img-thumbnail w-100" alt="">
+            <figcaption>Cliff Williams (Basse)</figcaption>
+          </figure>
+          <figure class="col col-sm-6">
+            <img src="./assets/img/chris-slade.png" class="img-thumbnail w-100" alt="">
+            <figcaption>Chris Slade (Batterie)</figcaption>
+          </figure>
+        </article>
+      </section>
+      <section class="container text-center">
+        <article class="row">
+          <img src="./assets/img/logo-ac-dc.png" class="d-block w-25" alt="" class="col">
+          <h2 class="col">Discographie</h2>
+        </article>
+        <div class="row">
+          <article class="col col-sm-12">
+            <img src="./assets/img/Discographie/High-voltage-1975.jpg" alt="" class="img-thumbnail w-100">
+            <h4>1975 : High Voltage</h4>
+            <p>Lorem, ipsum</p>
+            <button>Lire plus...</button>
+          </article>
+          <article class="col col-sm-12">
+            <img src="./assets/img/Discographie/Highway-to-hell-1979.jpg" alt="" class="img-thumbnail w-100">
+            <h4>1979 : Highway to Hell</h4>
+            <p>Lorem, ipsum </p>
+            <button>Lire plus...</button>
+          </article>
+          <article class="col col-sm-12">
+            <img src="./assets/img/Discographie/Back-in-black-1980.jpg" alt="" class="img-thumbnail w-100">
+            <h4>1980 : Back in Black</h4>
+            <p>Lorem, ipsum</p>
+            <button>Lire plus...</button>
+          </article>
+          <article class="col col-sm-12">
+            <img src="./assets/img/Discographie/Who-made-who-1986.jpg" alt="" class="img-thumbnail w-100">
+            <h4>1986 : Who made who</h4>
+            <p>Lorem, ipsum</p>
+            <button>Lire plus...</button>
+          </article>
+          <article class="col col-sm-12">
+            <img src="./assets/img/Discographie/Blow-up-your-video-1988.jpg" alt="" class="img-thumbnail w-100">
+            <h4>1988 : Blow up your Video</h4>
+            <p>Lorem, ipsum</p>
+            <button>Lire plus...</button>
+          </article>
+          <article class="col col-sm-12">
+            <img src="./assets/img/Discographie/Ballbreaker-1995.jpg" alt="" class="img-thumbnail w-100">
+            <h4>1995 : Ballbreaker</h4>
+            <p>Lorem, ipsum</p>
+            <button>Lire plus...</button>
+          </article>
+          <article class="col col-sm-12">
+            <img src="./assets/img/Discographie/Stiff-upper-lip-2000.jpg" alt="" class="img-thumbnail w-100">
+            <h4>2000 : Stiff Uper Lip</h4>
+            <p>Lorem, ipsum</p>
+            <button>Lire plus...</button>
+          </article>
+          <article class="col col-sm-12">
+            <img src="./assets/img/Discographie/Black-ice-2008.jpg" alt="" class="img-thumbnail w-100">
+            <h4>2008 : Black Ice</h4>
+            <p>Lorem, ipsum</p>
+            <button>Lire plus...</button>
+          </article>
+        </div>
+      </section>
+      <section class="container text-center">
+        <article class="row">
+          <img src="./assets/img/logo-ac-dc.png" class="d-block w-25" alt="" class="col">
+          <h2 class="col">Les dates des concerts</h2>
+        </article>
+        <table class="table table-dark">
+          <thead>
+            <tr>
+              <td>Date</td>
+              <td>Heure</td>
+              <td>Salle</td>
+              <td>Ville</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>08/06/2000</td>
+              <td>21:00</td>
+              <td>Stade de France</td>
+              <td>Paris</td>
+            </tr>
+            <tr>
+              <td>12/05/2002</td>
+              <td>21:00</td>
+              <td>Esplanade</td>
+              <td>Singapour</td>
+            </tr>
+            <tr>
+              <td>18/09/2009</td>
+              <td>20:30</td>
+              <td>Opera</td>
+              <td>Sydney</td>
+            </tr>
+            <tr>
+              <td>12/09/2021</td>
+              <td>20:30</td>
+              <td>Massey Hall</td>
+              <td>Toronto</td>
+            </tr>
+            <tr>
+              <td>12/09/2022</td>
+              <td>20:30</td>
+              <td>Madison Square garden</td>
+              <td>New York</td>
+            </tr>
+            <tr>
+              <td>08/06/2023</td>
+              <td>21:30</td>
+              <td>Stade deFrance</td>
+              <td>Paris</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section class="container text-center">
+        <article class="row">
+          <img src="./assets/img/logo-ac-dc.png" class="d-block w-25" alt="" class="col">
+          <h2 class="col">Contact</h2>
+        </article>
+        <form action="" class="row justify-content-center">
+          <input type="text" placeholder="Nom" class="col col-sm-3 m-2">
+          <input type="text" placeholder="Prénom" class="col col-sm-3 m-2">
+          <input type="mail" placeholder="E-mail" class="col col-sm-8 m-2">
+          <input type="text" placeholder="Vos commentaires" class="col col-sm-8 m-2">
+          <span class="col col-sm-4"></span>
+          <button class="col col-sm-2 m-1 mb-5">Envoyer</button>
+          <button class="col col-sm-2 m-1 mb-5">Annuler</button>
+        </form>
+      </section>
     </main>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

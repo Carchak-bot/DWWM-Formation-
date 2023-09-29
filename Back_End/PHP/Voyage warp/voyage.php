@@ -154,7 +154,9 @@ if (
     echo "[";
     echo $psyniscienceCheck1;
     echo "] ! <br>";
-    psyniscienceNav($_POST["psyniscience"], $_POST["per"], $chartsFinished, $psyniscienceCheck1, $dureeEronner, $tempstrajettheorique);
+    psyniscienceNav($_POST["psyniscience"], $_POST["per"], $chartsFinished, $psyniscienceCheck1, 
+    $dureeEronner, $tempstrajettheorique);
+    echo "<br>";
 
     while (
         ($psyniscienceCheck1 == 9) | ($psyniscienceCheck1 == 19) | ($psyniscienceCheck1 == 29) | ($psyniscienceCheck1 == 39) |
@@ -173,7 +175,8 @@ if (
         echo "[";
         echo $psyniscienceCheck1;
         echo "] ! <br>";
-        psyniscienceNav($_POST["psyniscience"], $_POST["per"], $chartsFinished, $psyniscienceCheck1, $dureeEronner, $tempstrajettheorique);
+        psyniscienceNav($_POST["psyniscience"], $_POST["per"], $chartsFinished, $psyniscienceCheck1, 
+        $dureeEronner, $tempstrajettheorique);
     }
 
     //Se protéger des mauvaises marées
@@ -191,33 +194,38 @@ if (
 
     //Localiser l'astronomican
     $psyniscienceCheck2 = rand(1, 100);
+
+    echo "[";
+    echo $psyniscienceCheck2;
+    echo "] ! <br>";
+
     switch ($route) {
         case 1:
         case 2:
         case 3:
             //psyniscience +20
             $bonus = 20;
-            psyniscienceAstro($_POST["psyniscience"], $_POST["per"], $psyniscienceCheck1, $psyniscienceCheck2Failed, $dureeEronner, $tempstrajettheorique, $bonus, $bonusNav);
+            psyniscienceAstro($_POST["psyniscience"], $_POST["per"], $psyniscienceCheck2, 
+            $psyniscienceCheck2Failed, $dureeEronner, $tempstrajettheorique, $bonus, $bonusNav);
             break;
         case 4:
         case 5:
         case 6:
         case 7:
         case 8:
+        case 10:
             //psyniscience normale
             $bonus = 0;
-            psyniscienceAstro($_POST["psyniscience"], $_POST["per"], $psyniscienceCheck1, $psyniscienceCheck2Failed, $dureeEronner, $tempstrajettheorique, $bonus, $bonusNav);
+            psyniscienceAstro($_POST["psyniscience"], $_POST["per"], $psyniscienceCheck2, 
+            $psyniscienceCheck2Failed, $dureeEronner, $tempstrajettheorique, $bonus, $bonusNav);
             break;
         case 9:
             //psyniscience -20
             $bonus = -20;
-            psyniscienceAstro($_POST["psyniscience"], $_POST["per"], $psyniscienceCheck1, $psyniscienceCheck2Failed, $dureeEronner, $tempstrajettheorique, $bonus, $bonusNav);
+            psyniscienceAstro($_POST["psyniscience"], $_POST["per"], $psyniscienceCheck2, 
+            $psyniscienceCheck2Failed, $dureeEronner, $tempstrajettheorique, $bonus, $bonusNav);
             break;
-        case 10:
-            //psyniscience normale
-            $bonus = 0;
-            psyniscienceAstro($_POST["psyniscience"], $_POST["per"], $psyniscienceCheck1, $psyniscienceCheck2Failed, $dureeEronner, $tempstrajettheorique, $bonus, $bonusNav);
-            break;
+
     }
 
 
@@ -239,7 +247,7 @@ if (
     }
 
 
-    for ($i = 1; $i <= $_POST["nombrePNJImportant"]; $i++) {
+    for ($i = 0; $i < $_POST["nombrePNJImportant"]; $i++) {
         $hallucinationCheck = rand(1, 100);
         switch ($hallucinationCheck) {
             case ($hallucinationCheck > $_POST["crewRating"]):
@@ -343,5 +351,3 @@ if (
         dérailler sévèrement la campagne.";
     }
 }
-
-?>

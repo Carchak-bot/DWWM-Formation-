@@ -382,8 +382,11 @@ function psyniscienceAstro($psyniscience, $per, $psyniscienceCheck2, $psyniscien
                 $bonusNav = 10;
             } else {
                 $bonusNav = -20;
-                $psyniscienceCheck2Failed = floor($psyniscienceCheck2 - $psyniscienceCheck2result);
+                $psyniscienceCheck2Failed = floor(($psyniscienceCheck2result) / 10);
+                echo $psyniscienceCheck2;
+                echo "<br>";
                 echo $psyniscienceCheck2Failed;
+                echo "<br>";
             }
             break;
         case ($psyniscience == "psyniscience+10"):
@@ -396,7 +399,7 @@ function psyniscienceAstro($psyniscience, $per, $psyniscienceCheck2, $psyniscien
                 $bonusNav = 10;
             } else {
                 $bonusNav = -20;
-                $psyniscienceCheck2Failed = floor($psyniscienceCheck2 - $psyniscienceCheck2result);
+                $psyniscienceCheck2Failed = floor(($psyniscienceCheck2 - $psyniscienceCheck2result) / 10);
             }
             break;
         case ($psyniscience == "psyniscience+20"):
@@ -409,7 +412,7 @@ function psyniscienceAstro($psyniscience, $per, $psyniscienceCheck2, $psyniscien
                 $bonusNav = 10;
             } else {
                 $bonusNav = -20;
-                $psyniscienceCheck2Failed = floor($psyniscienceCheck2 - $psyniscienceCheck2result);
+                $psyniscienceCheck2Failed = floor(($psyniscienceCheck2 - $psyniscienceCheck2result) / 10);
             }
             break;
         case ($psyniscience == "psyniscience+30"):
@@ -422,11 +425,8 @@ function psyniscienceAstro($psyniscience, $per, $psyniscienceCheck2, $psyniscien
                 $bonusNav = 10;
             } else {
                 $bonusNav = -20;
-                $psyniscienceCheck2Failed = floor($psyniscienceCheck2 - $psyniscienceCheck2result);
+                $psyniscienceCheck2Failed = floor(($psyniscienceCheck2 - $psyniscienceCheck2result) / 10);
             }
             break;
     }
 }
-
-
-?>

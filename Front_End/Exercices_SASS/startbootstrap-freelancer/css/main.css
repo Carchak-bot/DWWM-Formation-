@@ -1,0 +1,17 @@
+body {
+  font: rgb(255, 155, 172);
+}
+
+#grocon, #about {
+  background: rgb(139, 46, 46);
+}
+
+#portfolio, #contact, .modal-content {
+  background: rgb(55, 46, 139);
+}
+
+footer, nav {
+  background: rgb(39, 39, 39);
+}
+
+/*# sourceMappingURL=main.css.map */

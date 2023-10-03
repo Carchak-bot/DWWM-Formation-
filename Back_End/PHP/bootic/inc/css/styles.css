@@ -1,0 +1,35 @@
+#carouselCaskettes {
+    width: 45%;
+    margin: auto;
+    padding: 5%;
+}
+
+#carouselTshirt {
+    width: 45%;
+    margin: auto;
+    padding: 5%;
+}
+
+#carouselSweat {
+    width: 45%;
+    margin: auto;
+    padding: 5%;
+}
+
+#carouselSacs {
+    width: 45%;
+    margin: auto;
+    padding: 5%;
+}
+
+#entete {
+    padding-bottom: 5%;
+    background-color: rgba(50, 50, 100, 0.800);
+    color: white;
+}
+
+#piedpage {
+    padding: 5%;
+    background-color: rgba(50, 50, 100, 0.800);
+    color: white;
+}

@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="./inc/css/styles.css" />
   </head>
   <body>
+    <?php
+    include './inc/header.inc.php';
+    ?>
     <header id="entete">
       <nav class="navbar">
         <div class="container">
@@ -91,15 +94,38 @@
       <form action="">
         <input type="text" placeholder="Nom" />
         <input type="text" placeholder="Prenom" />
-        <input type="text" placeholder="Adresse e-mail" />
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Addresse mail" aria-label="mail-address" aria-describedby="basic-addon2">
+          <span class="input-group-text" id="basic-addon2">@exemple.com</span>
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Addresse de livraison</span>
+          <input type="text" class="form-control" placeholder="1 rue de l'inconnu" aria-label="address" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Pays</button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">France </a></li>
+            <li><a class="dropdown-item" href="#">Pays Cringe</a></li>
+            <li><a class="dropdown-item" href="#">Angleterre (berk)</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Etats Unis (turbo-berk)</a></li>
+          </ul>
+          <input type="text" class="form-control" aria-label="Text input with dropdown button">
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Code Postal" aria-label="postalCode">
+          <span class="input-group-text">/</span>
+          <input type="text" class="form-control" placeholder="Ville" aria-label="city">
+        </div>
         <input type="password" placeholder="Mot de passe" />
         <input type="password" placeholder="Confirmation du Mot de passe" />
         <button>S'inscrire</button>
       </form>
     </main>
-    <footer id="piedpage">
-      Copyright Théo Renault parce que c'est moi qu'ait fait ( et bootstrap )
-    </footer>
+    <?php
+    include './inc/footer.inc.php';
+    ?>
   </body>
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

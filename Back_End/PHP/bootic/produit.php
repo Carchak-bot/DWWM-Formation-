@@ -18,11 +18,11 @@ try {
     echo '
     <main class="produitUnite">
     <figure>
-    <img src="./inc/img/' . $value[12] . '/' . $value[8] . '.webp" class="d-block w-100" alt="' . $value[3] . '" />
+    <img src="./inc/img/' . $value[12] . '/' . $value[8].'" class="d-block w-100" alt="' . $value[3] . '" />
     <h5>' . $value[3] . '</h5>
     <p>' . $value[4] . '</p>
     </figure>
-    <button>Ajouter au panier</button>
+    <button><a href="../bootic/panier.php?action=C&id='.$value[0].'">Ajouter au Panier</a></button>
     </main>';
     }
 } catch (PDOException $e) {

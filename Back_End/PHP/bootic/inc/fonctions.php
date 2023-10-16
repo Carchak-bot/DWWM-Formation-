@@ -11,7 +11,7 @@ function truecarousel($db, $category)
     foreach ($res as $key => $value) {
         echo '<figure class="carousel-item">';
         echo '<a href="produit.php?id_produit=' . $value[0] . '">';
-        echo '<img src="./inc/img/' . $value[12] . '/' . $value[8] . '.webp" class="d-block w-100" alt="' . $value[3] . '" />';
+        echo '<img src="./inc/img/' . $value[12] . '/' . $value[8] . '" class="d-block w-100" alt="' . $value[3] . '" />';
         echo '</a>';
         echo '<div class="carousel-caption d-none d-md-block">';
         echo '<h5>' . $value[3] . '</h5>';
@@ -32,4 +32,41 @@ function truecarousel($db, $category)
       <span class="visually-hidden">Next</span>
     </button>
   </section>';
+}
+
+function dbConnect()
+{
+    try {
+
+        $db = new PDO("mysql:host=localhost; dbname=dbbootic; port=3306; charset=utf8", "root", "");
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $db;
+    } catch (PDOException $e) {
+        echo "Erreur : " . $e->getMessage();
+    }
+}
+
+
+
+function getProfile($pseudo)
+{
+    $getBdd = dbConnect();
+    $sql = "SELECT * FROM t_membre WHERE pseudo = '$pseudo'";
+    $profil = $getBdd->prepare($sql);
+    $profil->execute();
+    if ($profil->rowCount() == 1)
+        return $profil->fetch(); // Accès à la première ligne de résultat
+    else
+        throw new Exception("Aucun profil ne correspond au pseudo '$pseudo'");
+}
+
+
+function getAllProfiles()
+{
+    $getBdd = dbConnect();
+    $sql = "SELECT pseudo FROM t_membre";
+    $profils = $getBdd->prepare($sql);
+    $profils->execute();
+
+    return $profils->fetchAll();
 }
